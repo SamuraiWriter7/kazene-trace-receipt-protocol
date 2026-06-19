@@ -1,67 +1,66 @@
 trace_receipt:
-id: "trace-2026-06-18-002"
-version: "0.2.0"
-timestamp: "2026-06-18T06:15:00Z"
+  id: "trace-2026-06-18-002"
+  version: "0.2.0"
+  timestamp: "2026-06-18T06:15:00Z"
 
-event_type: "read"
-chain_id: "chain-2026-06-18-001"
-parent_trace_id: null
-child_traces:
-- "trace-2026-06-18-003"
+  event_type: "read"
+  chain_id: "chain-2026-06-18-001"
+  parent_trace_id: null
+  child_traces:
+    - "trace-2026-06-18-003"
 
-actor:
-type: "ai_agent"
-id: "agent:kazene-trace-reader"
-role: "reader"
-authority_scope: "delegated"
+  actor:
+    type: "ai_agent"
+    id: "agent:kazene-trace-reader"
+    role: "reader"
+    authority_scope: "delegated"
 
-source_refs:
-- type: "repository"
-ref_hash: "sha256:example-repository-hash"
-visibility: "public"
-influence_hint: "high"
+  source_refs:
+    - type: "repository"
+      ref_hash: "sha256:example-repository-hash"
+      visibility: "public"
+      influence_hint: "high"
 
-```
-- type: "file"
-  ref_hash: "sha256:example-readme-hash"
-  visibility: "public"
-  influence_hint: "critical"
-```
+    - type: "file"
+      ref_hash: "sha256:example-readme-hash"
+      visibility: "public"
+      influence_hint: "critical"
 
-transformation:
-intent: "trace_lifecycle_analysis"
-method: "read_and_extract_structural_context"
-model_or_tool: "ai_agent"
-model_version: "unknown"
-compute_provider: "cloud"
-output_hash: null
-derivative_level: "none"
+  transformation:
+    intent: "trace_lifecycle_analysis"
+    method: "read_and_extract_structural_context"
+    model_or_tool: "ai_agent"
+    model_version: "unknown"
+    compute_provider: "cloud"
+    output_hash: null
+    derivative_level: "none"
 
-contribution:
-contribution_type: "reading"
-weight_hint: "medium"
-estimated_influence: 0.6
+  contribution:
+    contribution_type: "reading"
+    weight_hint: "medium"
+    estimated_influence: 0.6
 
-permission:
-usage_scope: "research"
-consent_status: "not_required"
-license_ref: null
+  permission:
+    usage_scope: "research"
+    consent_status: "not_required"
+    license_ref: null
 
-privacy:
-raw_content_stored: false
-reversible: false
-retention: "working"
-zero_knowledge_proof: null
+  privacy:
+    raw_content_stored: false
+    reversible: false
+    retention: "working"
+    zero_knowledge_proof: null
 
-lifecycle:
-state: "validated"
-expires_at: null
-forgetting_action: "compact_after_use"
+  lifecycle:
+    state: "validated"
+    expires_at: null
+    forgetting_action: "compact_after_use"
 
-value_hook:
-royalty_route: "pending"
-attribution_required: true
+  value_hook:
+    royalty_route: "pending"
+    attribution_required: true
 
-review:
-human_review_required: true
-reason: "source_ingestion"
+  review:
+    human_review_required: true
+    reason: "source_ingestion"
+
