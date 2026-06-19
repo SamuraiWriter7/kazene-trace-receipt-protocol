@@ -1,0 +1,299 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://kazene.org/schemas/contribution-graph.schema.json",
+"title": "Kazene Contribution Graph Seed",
+"description": "A lightweight contribution graph structure that connects trace receipts into influence, lineage, memory, review, and future royalty-preparation relationships.",
+"type": "object",
+"required": [
+"contribution_graph"
+],
+"additionalProperties": false,
+"properties": {
+"contribution_graph": {
+"type": "object",
+"required": [
+"graph_id",
+"version",
+"created_at",
+"graph_type",
+"root_trace_id",
+"terminal_trace_ids",
+"nodes",
+"edges",
+"review"
+],
+"additionalProperties": false,
+"properties": {
+"graph_id": {
+"type": "string",
+"minLength": 1,
+"description": "Unique identifier for this contribution graph."
+},
+"version": {
+"type": "string",
+"pattern": "^0\.3\.0$",
+"description": "Protocol version used by this contribution graph."
+},
+"created_at": {
+"type": "string",
+"format": "date-time",
+"description": "Timestamp when the contribution graph was created."
+},
+"graph_type": {
+"type": "string",
+"enum": [
+"trace_lineage",
+"contribution_chain",
+"derivative_chain",
+"review_chain",
+"memory_chain",
+"royalty_preparation"
+],
+"description": "Type of contribution graph being represented."
+},
+"root_trace_id": {
+"type": "string",
+"minLength": 1,
+"description": "Trace receipt ID representing the root or origin of this graph."
+},
+"terminal_trace_ids": {
+"type": "array",
+"description": "Trace receipt IDs representing terminal or downstream endpoints of this graph.",
+"minItems": 1,
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true
+},
+"nodes": {
+"type": "array",
+"description": "Trace receipt nodes included in this contribution graph.",
+"minItems": 1,
+"items": {
+"type": "object",
+"required": [
+"trace_id",
+"node_type",
+"contribution_hint"
+],
+"additionalProperties": false,
+"properties": {
+"trace_id": {
+"type": "string",
+"minLength": 1,
+"description": "Trace receipt ID represented by this graph node."
+},
+"node_type": {
+"type": "string",
+"enum": [
+"origin",
+"source",
+"prompt",
+"reference",
+"reading",
+"ingestion",
+"generation",
+"edit",
+"review",
+"validation",
+"release",
+"memory",
+"archive"
+],
+"description": "Role of this trace receipt within the contribution graph."
+},
+"contribution_hint": {
+"type": "string",
+"enum": [
+"idea",
+"prompt",
+"data",
+"code",
+"design",
+"review",
+"correction",
+"action",
+"context",
+"memory",
+"source_reference",
+"reading",
+"ingestion",
+"draft",
+"publication",
+"validation",
+"archive"
+],
+"description": "Lightweight hint describing the contribution represented by this node."
+},
+"memory_action": {
+"type": [
+"string",
+"null"
+],
+"enum": [
+"retain",
+"compact",
+"forget",
+"archive",
+"review",
+null
+],
+"description": "Optional memory metabolism action associated with this node."
+},
+"review_required": {
+"type": [
+"boolean",
+"null"
+],
+"description": "Optional node-level review requirement."
+}
+}
+}
+},
+"edges": {
+"type": "array",
+"description": "Directed relationships between trace receipt nodes.",
+"minItems": 1,
+"items": {
+"type": "object",
+"required": [
+"from_trace_id",
+"to_trace_id",
+"relation_type",
+"influence_weight",
+"review_required"
+],
+"additionalProperties": false,
+"properties": {
+"from_trace_id": {
+"type": "string",
+"minLength": 1,
+"description": "Source trace receipt ID for this directed relationship."
+},
+"to_trace_id": {
+"type": "string",
+"minLength": 1,
+"description": "Target trace receipt ID for this directed relationship."
+},
+"relation_type": {
+"type": "string",
+"enum": [
+"influenced",
+"derived_from",
+"referenced_by",
+"generated_from",
+"edited_from",
+"validated_by",
+"reviewed_by",
+"released_as",
+"compacted_into",
+"archived_as",
+"routed_to"
+],
+"description": "Relationship type between two trace receipts."
+},
+"influence_weight": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+],
+"description": "Provisional influence weight for this relationship. This is not a final attribution or royalty score."
+},
+"review_required": {
+"type": "boolean",
+"description": "Whether this relationship requires human review."
+},
+"review_reason": {
+"type": [
+"string",
+"null"
+],
+"enum": [
+"none",
+"authorship",
+"attribution",
+"value_allocation",
+"privacy_risk",
+"safety_boundary",
+"cross_agent_authority",
+"disputed_contribution",
+"royalty_preparation",
+"memory_retention",
+"irreversible_publication",
+"other",
+null
+],
+"description": "Optional reason why this edge requires review."
+}
+}
+}
+},
+"review": {
+"type": "object",
+"required": [
+"graph_review_required",
+"reason"
+],
+"additionalProperties": false,
+"properties": {
+"graph_review_required": {
+"type": "boolean",
+"description": "Whether the contribution graph as a whole requires human review."
+},
+"reason": {
+"type": "string",
+"enum": [
+"none",
+"authorship",
+"attribution",
+"value_allocation",
+"privacy_risk",
+"safety_boundary",
+"cross_agent_authority",
+"disputed_contribution",
+"royalty_preparation",
+"memory_retention",
+"irreversible_publication",
+"other"
+],
+"description": "Reason for graph-level human review."
+}
+}
+},
+"value_hook": {
+"type": [
+"object",
+"null"
+],
+"description": "Optional future value-routing hook. This does not calculate payment.",
+"additionalProperties": false,
+"properties": {
+"royalty_route": {
+"type": "string",
+"enum": [
+"none",
+"pending",
+"direct",
+"pool",
+"human_review"
+],
+"description": "Future royalty or value-routing hint."
+},
+"attribution_required": {
+"type": "boolean",
+"description": "Whether attribution may be required for this contribution graph."
+}
+},
+"required": [
+"royalty_route",
+"attribution_required"
+]
+}
+}
+}
+}
+}
