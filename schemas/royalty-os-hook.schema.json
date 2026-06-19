@@ -31,7 +31,7 @@
 },
 "version": {
 "type": "string",
-"pattern": "^0\.5\.0$",
+"pattern": "^0\\.5\\.[0-9]+$",
 "description": "Protocol version used by this Royalty OS Hook record."
 },
 "created_at": {
