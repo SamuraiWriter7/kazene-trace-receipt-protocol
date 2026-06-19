@@ -13,11 +13,69 @@ It starts with a simpler question:
 ## Current Version
 
 ```text
-Version: v0.1.0-candidate
-Layer: Trace Receipt Core
+Version: v0.2.0-candidate
+Layer: Trace Lifecycle
 Status: Draft protocol candidate
 Validation: Passing
 ```
+
+Kazene Trace Receipt Protocol is currently at **v0.2.0-candidate**.
+
+This version extends the initial Trace Receipt Core by adding lifecycle-aware trace management.
+
+v0.2 introduces:
+
+* upstream information event types:
+
+  * `read`
+  * `ingest`
+  * `reference`
+* actor authority boundaries through `actor.authority_scope`,
+* source-level influence hints through `source_refs.influence_hint`,
+* explicit lifecycle state through `lifecycle.state`,
+* stronger parent-child trace semantics,
+* and lifecycle-aware retention, compaction, forgetting, archive, and review behavior.
+
+The goal of v0.2 is not only to record that an AI-assisted event occurred.
+
+The goal is to describe how that trace receipt moves through time.
+
+```text
+v0.1 records the receipt.
+v0.2 gives the receipt a lifecycle.
+```
+
+---
+
+## Validation Status
+
+The current examples have been validated against the JSON Schema.
+
+```text
+schemas/trace-receipt.schema.json
+examples/trace-receipt.example.yaml
+examples/trace-receipt-lifecycle.example.yaml
+scripts/validate_examples.py
+.github/workflows/validate-examples.yml
+```
+
+Validation status:
+
+```text
+GitHub Actions: Passing
+Trace Receipt Core example: Passing
+Trace Receipt Lifecycle example: Passing
+Schema validation: Passing
+```
+
+To validate locally, run:
+
+```bash
+python scripts/validate_examples.py
+```
+
+A successful validation confirms that both the v0.1 Trace Receipt Core example and the v0.2 Trace Lifecycle example conform to the current schema.
+
 
 Kazene Trace Receipt Protocol is currently at **v0.1.0-candidate**.
 
