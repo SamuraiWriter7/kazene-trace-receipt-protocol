@@ -1,56 +1,57 @@
 trace_receipt:
-id: "trace-2026-06-18-001"
-version: "0.1.0"
-timestamp: "2026-06-18T05:39:00Z"
+  id: "trace-2026-06-18-001"
+  version: "0.1.0"
+  timestamp: "2026-06-18T05:39:00Z"
 
-event_type: "generate"
-chain_id: null
-parent_trace_id: null
-child_traces: []
+  event_type: "generate"
+  chain_id: null
+  parent_trace_id: null
+  child_traces: []
 
-actor:
-type: "human"
-id: "human:creator"
-role: "originator"
+  actor:
+    type: "human"
+    id: "human:creator"
+    role: "originator"
 
-source_refs:
-- type: "prompt"
-ref_hash: "sha256:example-source-hash"
-visibility: "private"
+  source_refs:
+    - type: "prompt"
+      ref_hash: "sha256:example-source-hash"
+      visibility: "private"
 
-transformation:
-intent: "article_draft"
-method: "ai_assisted_generation"
-model_or_tool: "chatgpt"
-model_version: "unknown"
-compute_provider: "openai"
-output_hash: "sha256:example-output-hash"
-derivative_level: "medium"
+  transformation:
+    intent: "article_draft"
+    method: "ai_assisted_generation"
+    model_or_tool: "chatgpt"
+    model_version: "unknown"
+    compute_provider: "openai"
+    output_hash: "sha256:example-output-hash"
+    derivative_level: "medium"
 
-contribution:
-contribution_type: "idea"
-weight_hint: "high"
-estimated_influence: 0.8
+  contribution:
+    contribution_type: "idea"
+    weight_hint: "high"
+    estimated_influence: 0.8
 
-permission:
-usage_scope: "public"
-consent_status: "explicit"
-license_ref: null
+  permission:
+    usage_scope: "public"
+    consent_status: "explicit"
+    license_ref: null
 
-privacy:
-raw_content_stored: false
-reversible: false
-retention: "working"
-zero_knowledge_proof: null
+  privacy:
+    raw_content_stored: false
+    reversible: false
+    retention: "working"
+    zero_knowledge_proof: null
 
-lifecycle:
-expires_at: null
-forgetting_action: "compact_after_use"
+  lifecycle:
+    expires_at: null
+    forgetting_action: "compact_after_use"
 
-value_hook:
-royalty_route: "pending"
-attribution_required: true
+  value_hook:
+    royalty_route: "pending"
+    attribution_required: true
 
-review:
-human_review_required: true
-reason: "authorship_and_value"
+  review:
+    human_review_required: true
+    reason: "authorship_and_value"
+
