@@ -26,6 +26,11 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "contribution-graph.schema.json",
         "example": ROOT / "examples" / "contribution-graph.example.yaml",
     },
+    {
+        "name": "Memory Breathing Integration",
+        "schema": ROOT / "schemas" / "memory-breathing.schema.json",
+        "example": ROOT / "examples" / "memory-breathing.example.yaml",
+    },
 ]
 
 def load_json(path: Path):
@@ -78,4 +83,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
 
