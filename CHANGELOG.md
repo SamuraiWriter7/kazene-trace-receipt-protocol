@@ -1,5 +1,102 @@
 # Changelog
 
+## [v0.4.0-candidate] - 2026-06-19
+
+### Added
+
+* Added `docs/memory-breathing-integration.md`.
+* Added `schemas/memory-breathing.schema.json`.
+* Added `examples/memory-breathing.example.yaml`.
+* Updated `scripts/validate_examples.py` to validate:
+
+  * Trace Receipt Core
+  * Trace Receipt Lifecycle
+  * Contribution Graph Seed
+  * Memory Breathing Integration
+* Added the initial **Memory Breathing Integration** layer.
+
+### Defined
+
+* Defined memory layers:
+
+  * `short_term`
+  * `working`
+  * `long_term`
+  * `implicit`
+  * `archive`
+* Defined memory actions:
+
+  * `retain`
+  * `compact`
+  * `forget`
+  * `archive`
+  * `review`
+  * `implicit`
+  * `convert_to_rule`
+* Defined memory weights:
+
+  * `low`
+  * `medium`
+  * `high`
+  * `critical`
+* Defined memory target types:
+
+  * `trace_receipt`
+  * `contribution_graph`
+  * `trace_chain`
+  * `graph_edge`
+  * `graph_node`
+  * `release_record`
+  * `validation_record`
+  * `rumination_record`
+* Defined retention policy fields:
+
+  * `retain_until`
+  * `review_after`
+  * `archive_after`
+* Defined compaction policy fields:
+
+  * `compacted_summary_ref`
+  * `raw_trace_retained`
+  * `structural_pattern_retained`
+* Defined memory review boundary fields:
+
+  * `human_review_required`
+  * `reason`
+* Defined optional links to:
+
+  * trace receipts
+  * contribution graphs
+  * rumination records
+  * royalty hooks
+
+### Validation
+
+* Confirmed that `examples/trace-receipt.example.yaml` passes validation.
+* Confirmed that `examples/trace-receipt-lifecycle.example.yaml` passes validation.
+* Confirmed that `examples/contribution-graph.example.yaml` passes validation.
+* Confirmed that `examples/memory-breathing.example.yaml` passes validation.
+* Confirmed GitHub Actions validation passes.
+
+### Design Principles
+
+* Established that trace should not accumulate endlessly.
+* Established that memory is not storage, but metabolism.
+* Established that forgetting is not loss, but lifecycle control.
+* Established that compaction is not erasure, but transformation.
+* Established that critical memory decisions require human review.
+* Established that low-value trace can be compacted or forgotten after useful structure is extracted.
+* Established that high-value trace can be retained, archived, or converted into recurrence rules.
+* Established that Memory Breathing Integration connects Trace Receipt, Trace Lifecycle, Contribution Graph, 風の記憶丸, 構造反芻丸, and Royalty OS.
+
+### Status
+
+* Status: `v0.4.0-candidate`
+* Layer: `Memory Breathing Integration`
+* Validation: Passing
+* Maturity: Draft protocol candidate
+
+
 ## [v0.2.0-candidate] - 2026-06-19
 
 ### Added
