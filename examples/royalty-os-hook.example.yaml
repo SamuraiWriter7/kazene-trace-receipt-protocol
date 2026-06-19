@@ -1,0 +1,47 @@
+royalty_os_hook:
+  hook_id: "royalty-hook-2026-06-19-001"
+  version: "0.5.0"
+  created_at: "2026-06-19T09:30:00Z"
+
+  target:
+    target_type: "contribution_graph"
+    target_id: "graph-2026-06-19-001"
+
+  routing:
+    royalty_route: "pending"
+    route_basis: "contribution_graph"
+    attribution_required: true
+    monetization_status: "not_calculated"
+
+  allocation:
+    allocation_mode: "not_assigned"
+    allocation_hint: "pool_candidate"
+    estimated_value_weight: "high"
+
+  review:
+    human_review_required: true
+    reason: "royalty_preparation"
+
+  dispute:
+    dispute_status: "none"
+    dispute_preparation_required: false
+    dispute_reason: null
+
+  links:
+    trace_receipt_ids:
+      - "trace-2026-06-19-001"
+      - "trace-2026-06-19-002"
+      - "trace-2026-06-19-003"
+      - "trace-2026-06-19-004"
+      - "trace-2026-06-19-005"
+
+    contribution_graph_ids:
+      - "graph-2026-06-19-001"
+
+    memory_breathing_ids:
+      - "memory-2026-06-19-001"
+
+    release_record_ids:
+      - "release-v0.5.0-candidate"
+
+    publication_record_ids: []
