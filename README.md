@@ -92,33 +92,6 @@ The goal is to establish a minimal, privacy-aware, lifecycle-conscious receipt f
 
 ---
 
-## Validation Status
-
-The current example has been validated against the JSON Schema.
-
-```text
-schemas/trace-receipt.schema.json
-examples/trace-receipt.example.yaml
-scripts/validate_examples.py
-.github/workflows/validate-examples.yml
-```
-
-Validation status:
-
-```text
-GitHub Actions: Passing
-Schema validation: Passing
-Example validation: Passing
-```
-
-To validate locally, run:
-
-```bash
-python scripts/validate_examples.py
-```
-
-A successful validation confirms that the example trace receipt conforms to the v0.1 schema.
-
 ## Why This Exists
 
 AI-assisted work is becoming faster, denser, and more derivative.
@@ -770,13 +743,11 @@ Expected command:
 python scripts/validate_examples.py
 ```
 
----
-
 ## Version Roadmap
 
 ### v0.1 — Trace Receipt Core
 
-Minimal schema, example, validator, and README.
+Status: Completed as `v0.1.0-candidate`
 
 Focus:
 
@@ -787,29 +758,36 @@ define privacy and lifecycle fields
 prepare future contribution graph linkage
 ```
 
+v0.1 established the first executable receipt structure for AI-assisted creation, transformation, routing, and derivative events.
+
 ---
 
 ### v0.2 — Trace Lifecycle
 
-Adds stronger lifecycle semantics.
+Status: Current candidate
 
 Focus:
 
 ```text
-parent_trace_id
-child_traces
-expires_at
-forgetting_action
-retention policy
+read / ingest / reference event types
+actor authority scope
+source influence hints
+explicit lifecycle state
+parent-child trace semantics
+retention / compaction / forgetting / archive / review
 ```
+
+v0.2 extends Trace Receipt Core by adding lifecycle-aware trace management.
+
+It introduces the idea that a trace receipt is not only a static record.
+
+It can be created, validated, linked, compacted, retained, forgotten, archived, or reviewed.
 
 ---
 
 ### v0.3 — Contribution Graph Seed
 
-Connects receipts into lightweight contribution graphs.
-
-Focus:
+Planned focus:
 
 ```text
 trace chains
@@ -818,13 +796,13 @@ source-output relationships
 review triggers
 ```
 
+v0.3 will connect multiple trace receipts into lightweight contribution graphs.
+
 ---
 
 ### v0.4 — Memory Breathing Integration
 
-Connects trace receipts to memory metabolism.
-
-Focus:
+Planned focus:
 
 ```text
 retain
@@ -835,13 +813,13 @@ implicit memory
 human review
 ```
 
+v0.4 will connect trace receipts to memory metabolism and Kazene Memory Breathing systems.
+
 ---
 
 ### v0.5 — Royalty OS Hook
 
-Adds preliminary hooks for value circulation.
-
-Focus:
+Planned focus:
 
 ```text
 attribution_required
@@ -851,7 +829,8 @@ review boundary
 dispute preparation
 ```
 
----
+v0.5 will add preliminary hooks for future value circulation and Royalty OS integration.
+
 
 ## Example Use Cases
 
