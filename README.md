@@ -13,48 +13,73 @@ It starts with a simpler question:
 ## Current Version
 
 ```text
-Version: v0.2.0-candidate
-Layer: Trace Lifecycle
+Version: v0.4.0-candidate
+Layer: Memory Breathing Integration
 Status: Draft protocol candidate
 Validation: Passing
 ```
 
-Kazene Trace Receipt Protocol is currently at **v0.2.0-candidate**.
+Kazene Trace Receipt Protocol is currently at **v0.4.0-candidate**.
 
-This version extends the initial Trace Receipt Core by adding lifecycle-aware trace management.
+This version extends the protocol by connecting trace receipts and contribution graphs to memory metabolism.
 
-v0.2 introduces:
+v0.4 introduces:
 
-* upstream information event types:
+* memory layers:
 
-  * `read`
-  * `ingest`
-  * `reference`
-* actor authority boundaries through `actor.authority_scope`,
-* source-level influence hints through `source_refs.influence_hint`,
-* explicit lifecycle state through `lifecycle.state`,
-* stronger parent-child trace semantics,
-* and lifecycle-aware retention, compaction, forgetting, archive, and review behavior.
+  * `short_term`
+  * `working`
+  * `long_term`
+  * `implicit`
+  * `archive`
+* memory actions:
 
-The goal of v0.2 is not only to record that an AI-assisted event occurred.
+  * `retain`
+  * `compact`
+  * `forget`
+  * `archive`
+  * `review`
+  * `implicit`
+  * `convert_to_rule`
+* memory weights:
 
-The goal is to describe how that trace receipt moves through time.
+  * `low`
+  * `medium`
+  * `high`
+  * `critical`
+* target types for memory decisions,
+* retention policy,
+* compaction policy,
+* human review boundary,
+* and integration with 風の記憶丸, 構造反芻丸, and Royalty OS.
+
+The goal of v0.4 is not to remember everything.
+
+The goal is to remember less, but better.
 
 ```text
 v0.1 records the receipt.
 v0.2 gives the receipt a lifecycle.
+v0.3 connects receipts into contribution graphs.
+v0.4 teaches trace how to breathe.
 ```
 
 ---
 
 ## Validation Status
 
-The current examples have been validated against the JSON Schema.
+The current examples have been validated against their JSON Schemas.
 
 ```text
 schemas/trace-receipt.schema.json
+schemas/contribution-graph.schema.json
+schemas/memory-breathing.schema.json
+
 examples/trace-receipt.example.yaml
 examples/trace-receipt-lifecycle.example.yaml
+examples/contribution-graph.example.yaml
+examples/memory-breathing.example.yaml
+
 scripts/validate_examples.py
 .github/workflows/validate-examples.yml
 ```
@@ -65,6 +90,8 @@ Validation status:
 GitHub Actions: Passing
 Trace Receipt Core example: Passing
 Trace Receipt Lifecycle example: Passing
+Contribution Graph Seed example: Passing
+Memory Breathing Integration example: Passing
 Schema validation: Passing
 ```
 
@@ -74,23 +101,8 @@ To validate locally, run:
 python scripts/validate_examples.py
 ```
 
-A successful validation confirms that both the v0.1 Trace Receipt Core example and the v0.2 Trace Lifecycle example conform to the current schema.
+A successful validation confirms that all current examples conform to their corresponding schemas.
 
-
-Kazene Trace Receipt Protocol is currently at **v0.1.0-candidate**.
-
-This version defines the first executable core of the protocol:
-
-* a minimal `trace_receipt` schema,
-* a valid YAML example,
-* a Python validation script,
-* and GitHub Actions-based schema/example validation.
-
-The goal of this version is not to calculate attribution or royalty distribution.
-
-The goal is to establish a minimal, privacy-aware, lifecycle-conscious receipt format for AI-assisted creation, transformation, routing, and derivative events.
-
----
 
 ## Why This Exists
 
