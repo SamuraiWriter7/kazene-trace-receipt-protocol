@@ -1,0 +1,77 @@
+contribution_graph:
+  graph_id: "graph-2026-06-19-001"
+  version: "0.3.0"
+  created_at: "2026-06-19T07:30:00Z"
+
+  graph_type: "contribution_chain"
+  root_trace_id: "trace-2026-06-19-001"
+  terminal_trace_ids:
+    - "trace-2026-06-19-005"
+
+  nodes:
+    - trace_id: "trace-2026-06-19-001"
+      node_type: "origin"
+      contribution_hint: "idea"
+      memory_action: "retain"
+      review_required: false
+
+    - trace_id: "trace-2026-06-19-002"
+      node_type: "prompt"
+      contribution_hint: "prompt"
+      memory_action: "compact"
+      review_required: false
+
+    - trace_id: "trace-2026-06-19-003"
+      node_type: "generation"
+      contribution_hint: "draft"
+      memory_action: "compact"
+      review_required: false
+
+    - trace_id: "trace-2026-06-19-004"
+      node_type: "edit"
+      contribution_hint: "correction"
+      memory_action: "retain"
+      review_required: false
+
+    - trace_id: "trace-2026-06-19-005"
+      node_type: "release"
+      contribution_hint: "publication"
+      memory_action: "archive"
+      review_required: true
+
+  edges:
+    - from_trace_id: "trace-2026-06-19-001"
+      to_trace_id: "trace-2026-06-19-002"
+      relation_type: "influenced"
+      influence_weight: "high"
+      review_required: false
+      review_reason: null
+
+    - from_trace_id: "trace-2026-06-19-002"
+      to_trace_id: "trace-2026-06-19-003"
+      relation_type: "generated_from"
+      influence_weight: "high"
+      review_required: false
+      review_reason: null
+
+    - from_trace_id: "trace-2026-06-19-003"
+      to_trace_id: "trace-2026-06-19-004"
+      relation_type: "edited_from"
+      influence_weight: "medium"
+      review_required: false
+      review_reason: null
+
+    - from_trace_id: "trace-2026-06-19-004"
+      to_trace_id: "trace-2026-06-19-005"
+      relation_type: "released_as"
+      influence_weight: "critical"
+      review_required: true
+      review_reason: "irreversible_publication"
+
+  review:
+    graph_review_required: true
+    reason: "irreversible_publication"
+
+  value_hook:
+    royalty_route: "pending"
+    attribution_required: true
