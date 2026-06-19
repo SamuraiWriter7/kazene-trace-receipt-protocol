@@ -10,7 +10,56 @@ It starts with a simpler question:
 
 > What happened, what was referenced, what was transformed, and what should be preserved, compacted, forgotten, or reviewed?
 
+## Current Version
+
+```text
+Version: v0.1.0-candidate
+Layer: Trace Receipt Core
+Status: Draft protocol candidate
+Validation: Passing
+```
+
+Kazene Trace Receipt Protocol is currently at **v0.1.0-candidate**.
+
+This version defines the first executable core of the protocol:
+
+* a minimal `trace_receipt` schema,
+* a valid YAML example,
+* a Python validation script,
+* and GitHub Actions-based schema/example validation.
+
+The goal of this version is not to calculate attribution or royalty distribution.
+
+The goal is to establish a minimal, privacy-aware, lifecycle-conscious receipt format for AI-assisted creation, transformation, routing, and derivative events.
+
 ---
+
+## Validation Status
+
+The current example has been validated against the JSON Schema.
+
+```text
+schemas/trace-receipt.schema.json
+examples/trace-receipt.example.yaml
+scripts/validate_examples.py
+.github/workflows/validate-examples.yml
+```
+
+Validation status:
+
+```text
+GitHub Actions: Passing
+Schema validation: Passing
+Example validation: Passing
+```
+
+To validate locally, run:
+
+```bash
+python scripts/validate_examples.py
+```
+
+A successful validation confirms that the example trace receipt conforms to the v0.1 schema.
 
 ## Why This Exists
 
