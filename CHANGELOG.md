@@ -1,5 +1,111 @@
 # Changelog
 
+## [v0.2.0-candidate] - 2026-06-19
+
+### Added
+
+* Added `docs/trace-lifecycle.md`.
+* Added `examples/trace-receipt-lifecycle.example.yaml`.
+* Updated `schemas/trace-receipt.schema.json` for v0.2 lifecycle support.
+* Updated `scripts/validate_examples.py` to validate both:
+
+  * Trace Receipt Core example
+  * Trace Receipt Lifecycle example
+* Added lifecycle-aware trace semantics.
+
+### Extended
+
+* Extended `event_type` with upstream information actions:
+
+  * `read`
+  * `ingest`
+  * `reference`
+* Extended `actor` with:
+
+  * `authority_scope`
+* Extended `source_refs` with:
+
+  * `influence_hint`
+* Extended `lifecycle` with:
+
+  * `state`
+* Extended `transformation.output_hash` to allow `null` for read-only events.
+* Extended `transformation.derivative_level` with:
+
+  * `none`
+* Extended `contribution.contribution_type` with:
+
+  * `source_reference`
+  * `reading`
+  * `ingestion`
+* Extended `review.reason` with:
+
+  * `source_ingestion`
+  * `authority_scope`
+  * `trace_lifecycle`
+  * `memory_retention`
+
+### Defined
+
+* Defined explicit lifecycle states:
+
+  * `created`
+  * `validated`
+  * `linked`
+  * `compacted`
+  * `retained`
+  * `forgotten`
+  * `archived`
+  * `reviewed`
+* Defined actor authority scopes:
+
+  * `local_only`
+  * `cloud`
+  * `delegated`
+  * `cross_agent`
+  * `public_agent`
+  * `restricted`
+* Defined source influence hints:
+
+  * `low`
+  * `medium`
+  * `high`
+  * `critical`
+* Defined trace lifecycle behavior for:
+
+  * reading
+  * ingestion
+  * reference
+  * validation
+  * linking
+  * compaction
+  * retention
+  * forgetting
+  * archiving
+  * human review
+
+### Validation
+
+* Confirmed that `examples/trace-receipt.example.yaml` passes validation.
+* Confirmed that `examples/trace-receipt-lifecycle.example.yaml` passes validation.
+* Confirmed GitHub Actions validation passes.
+
+### Design Principles
+
+* Established that AI trace begins before generation, at the point of reading, ingestion, or reference.
+* Established that actor authority boundaries should be recorded explicitly.
+* Established that source-level influence should be captured as a provisional hint, not a final attribution score.
+* Established that trace receipts should have lifecycle states rather than remaining static records.
+* Reinforced that forgetting, compaction, archive, and human review are first-class trace lifecycle operations.
+
+### Status
+
+* Status: `v0.2.0-candidate`
+* Layer: `Trace Lifecycle`
+* Validation: Passing
+* Maturity: Draft protocol candidate
+
+
 All notable changes to this project will be documented in this file.
 
 This project follows a candidate-based release flow for early protocol development.
