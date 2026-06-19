@@ -776,7 +776,7 @@ v0.1 established the first executable receipt structure for AI-assisted creation
 
 ### v0.2 — Trace Lifecycle
 
-Status: Current candidate
+Status: Completed as `v0.2.0-candidate`
 
 Focus:
 
@@ -789,9 +789,9 @@ parent-child trace semantics
 retention / compaction / forgetting / archive / review
 ```
 
-v0.2 extends Trace Receipt Core by adding lifecycle-aware trace management.
+v0.2 extended Trace Receipt Core by adding lifecycle-aware trace management.
 
-It introduces the idea that a trace receipt is not only a static record.
+It introduced the idea that a trace receipt is not only a static record.
 
 It can be created, validated, linked, compacted, retained, forgotten, archived, or reviewed.
 
@@ -799,33 +799,52 @@ It can be created, validated, linked, compacted, retained, forgotten, archived, 
 
 ### v0.3 — Contribution Graph Seed
 
-Planned focus:
+Status: Completed as `v0.3.0-candidate`
+
+Focus:
 
 ```text
 trace chains
 influence hints
 source-output relationships
+graph nodes
+graph edges
 review triggers
 ```
 
-v0.3 will connect multiple trace receipts into lightweight contribution graphs.
+v0.3 connected multiple trace receipts into lightweight contribution graphs.
+
+It established the first graph layer for mapping influence, lineage, memory actions, review boundaries, and future royalty-preparation routes.
 
 ---
 
 ### v0.4 — Memory Breathing Integration
 
-Planned focus:
+Status: Current candidate
+
+Focus:
 
 ```text
-retain
-compact
-forget
-archive
-implicit memory
-human review
+memory layers
+memory actions
+memory weights
+retention policy
+compaction policy
+human review boundary
+implicit guidance
+convert_to_rule
 ```
 
-v0.4 will connect trace receipts to memory metabolism and Kazene Memory Breathing systems.
+v0.4 connects trace receipts and contribution graphs to memory metabolism.
+
+It defines how trace should be retained, compacted, forgotten, archived, reviewed, made implicit, or converted into recurrence rules.
+
+In short:
+
+```text
+Trace should not accumulate endlessly.
+Trace should breathe.
+```
 
 ---
 
@@ -839,9 +858,14 @@ royalty_route
 pool routing
 review boundary
 dispute preparation
+value circulation readiness
 ```
 
 v0.5 will add preliminary hooks for future value circulation and Royalty OS integration.
+
+It will not calculate final payment.
+
+It will prepare trace, graph, and memory records for attribution review, royalty routing, and dispute-aware value circulation.
 
 
 ## Example Use Cases
