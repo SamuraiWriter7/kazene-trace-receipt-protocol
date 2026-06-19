@@ -2,7 +2,7 @@
 "$schema": "https://json-schema.org/draft/2020-12/schema",
 "$id": "https://kazene.org/schemas/trace-receipt.schema.json",
 "title": "Kazene Trace Receipt",
-"description": "A minimal structured receipt for AI-assisted creation, transformation, routing, and derivative events without storing raw content by default.",
+"description": "A structured receipt for AI-assisted creation, reading, referencing, transformation, routing, lifecycle management, and derivative events without storing raw content by default.",
 "type": "object",
 "required": [
 "trace_receipt"
@@ -35,8 +35,11 @@
 },
 "version": {
 "type": "string",
-"pattern": "^0\\.1\\.0$",
-"description": "Protocol version used by this receipt."
+"enum": [
+"0.1.0",
+"0.2.0"
+],
+"description": "Protocol version used by this receipt. v0.2.0 adds read/reference events, actor authority scope, source influence hints, and explicit lifecycle state."
 },
 "timestamp": {
 "type": "string",
@@ -46,6 +49,9 @@
 "event_type": {
 "type": "string",
 "enum": [
+"read",
+"ingest",
+"reference",
 "generate",
 "edit",
 "summarize",
@@ -64,7 +70,7 @@
 "string",
 "null"
 ],
-"description": "Optional identifier for a future trace chain or distributed ledger reference."
+"description": "Optional identifier for a trace chain or distributed ledger reference."
 },
 "parent_trace_id": {
 "type": [
@@ -112,6 +118,18 @@
 "type": "string",
 "minLength": 1,
 "description": "Role of the actor in this trace event."
+},
+"authority_scope": {
+"type": "string",
+"enum": [
+"local_only",
+"cloud",
+"delegated",
+"cross_agent",
+"public_agent",
+"restricted"
+],
+"description": "Authority boundary under which the actor performed the event. Required for v0.2.0 receipts."
 }
 }
 },
@@ -157,6 +175,20 @@
 "restricted"
 ],
 "description": "Visibility level of the referenced source."
+},
+"influence_hint": {
+"type": [
+"string",
+"null"
+],
+"enum": [
+"low",
+"medium",
+"high",
+"critical",
+null
+],
+"description": "Optional provisional influence hint for this source. This is not a final attribution score."
 }
 }
 }
@@ -177,12 +209,12 @@
 "intent": {
 "type": "string",
 "minLength": 1,
-"description": "Purpose or intent of the transformation."
+"description": "Purpose or intent of the transformation, reading, reference, routing, or lifecycle action."
 },
 "method": {
 "type": "string",
 "minLength": 1,
-"description": "Method used for the transformation."
+"description": "Method used for the event."
 },
 "model_or_tool": {
 "type": "string",
@@ -197,22 +229,25 @@
 "compute_provider": {
 "type": "string",
 "minLength": 1,
-"description": "Compute or service provider used for the transformation."
+"description": "Compute or service provider used for the event."
 },
 "output_hash": {
-"type": "string",
-"minLength": 1,
-"description": "Hash or structured reference for the output. Raw output content should not be stored here."
+"type": [
+"string",
+"null"
+],
+"description": "Hash or structured reference for the output. Use null when no output artifact is produced, such as read-only events."
 },
 "derivative_level": {
 "type": "string",
 "enum": [
+"none",
 "low",
 "medium",
 "high",
 "critical"
 ],
-"description": "Provisional indication of how derivative the output is. This is not a legal or economic judgment."
+"description": "Provisional indication of how derivative the output or action is. This is not a legal or economic judgment."
 }
 }
 },
@@ -236,7 +271,10 @@
 "correction",
 "action",
 "context",
-"memory"
+"memory",
+"source_reference",
+"reading",
+"ingestion"
 ],
 "description": "Lightweight hint about the contribution type."
 },
@@ -350,6 +388,20 @@
 ],
 "additionalProperties": false,
 "properties": {
+"state": {
+"type": "string",
+"enum": [
+"created",
+"validated",
+"linked",
+"compacted",
+"retained",
+"forgotten",
+"archived",
+"reviewed"
+],
+"description": "Explicit lifecycle state of the trace receipt. Required for v0.2.0 receipts."
+},
 "expires_at": {
 "type": [
 "string",
@@ -423,13 +475,50 @@
 "irreversible_publication",
 "cross_agent_authority",
 "disputed_contribution",
+"source_ingestion",
+"authority_scope",
+"trace_lifecycle",
+"memory_retention",
 "other"
 ],
 "description": "Reason for human review."
 }
 }
 }
+},
+"allOf": [
+{
+"if": {
+"properties": {
+"version": {
+"const": "0.2.0"
 }
+},
+"required": [
+"version"
+]
+},
+"then": {
+"properties": {
+"actor": {
+"required": [
+"type",
+"id",
+"role",
+"authority_scope"
+]
+},
+"lifecycle": {
+"required": [
+"state",
+"expires_at",
+"forgetting_action"
+]
+}
+}
+}
+}
+]
 }
 }
 }
