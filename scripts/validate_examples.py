@@ -21,6 +21,11 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "trace-receipt.schema.json",
         "example": ROOT / "examples" / "trace-receipt-lifecycle.example.yaml",
     },
+    {
+        "name": "Contribution Graph Seed",
+        "schema": ROOT / "schemas" / "contribution-graph.schema.json",
+        "example": ROOT / "examples" / "contribution-graph.example.yaml",
+    },
 ]
 
 def load_json(path: Path):
@@ -73,3 +78,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
