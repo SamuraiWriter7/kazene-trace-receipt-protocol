@@ -1,197 +1,100 @@
 # Kazene Trace Receipt Protocol
 
-**Kazene Trace Receipt Protocol** is a minimal standard for recording structured receipts of AI-assisted creation, transformation, routing, and derivative events without storing raw content by default.
+A minimal, privacy-preserving protocol for recording AI-assisted creation, transformation, contribution, memory, and value-circulation readiness as structured trace receipts.
 
-It is designed as a lightweight trace layer for future attribution, memory metabolism, contribution graphs, and royalty circulation systems.
-
-This protocol does **not** start with payment distribution.
-
-It starts with a simpler question:
-
-> What happened, what was referenced, what was transformed, and what should be preserved, compacted, forgotten, or reviewed?
+---
 
 ## Current Version
 
 ```text
-Version: v0.4.0-candidate
-Layer: Memory Breathing Integration
+Version: v0.5.0-candidate
+Layer: Royalty OS Hook
 Status: Draft protocol candidate
 Validation: Passing
 ```
 
-Kazene Trace Receipt Protocol is currently at **v0.4.0-candidate**.
+Kazene Trace Receipt Protocol is currently at **v0.5.0-candidate**.
 
-This version extends the protocol by connecting trace receipts and contribution graphs to memory metabolism.
+This version extends the protocol by connecting trace receipts, contribution graphs, and memory breathing records to preliminary value-circulation routing.
 
-v0.4 introduces:
+v0.5 introduces:
 
-* memory layers:
-
-  * `short_term`
-  * `working`
-  * `long_term`
-  * `implicit`
-  * `archive`
-* memory actions:
-
-  * `retain`
-  * `compact`
-  * `forget`
-  * `archive`
-  * `review`
-  * `implicit`
-  * `convert_to_rule`
-* memory weights:
-
-  * `low`
-  * `medium`
-  * `high`
-  * `critical`
-* target types for memory decisions,
-* retention policy,
-* compaction policy,
+* Royalty OS Hook records,
+* royalty routing signals,
+* attribution readiness,
+* monetization status,
+* allocation readiness,
+* dispute preparation,
 * human review boundary,
-* and integration with 風の記憶丸, 構造反芻丸, and Royalty OS.
+* and links between trace, graph, memory, release, and publication records.
 
-The goal of v0.4 is not to remember everything.
+The goal of v0.5 is not to calculate payment.
 
-The goal is to remember less, but better.
+The goal is to prepare clean, reviewable value-circulation signals.
 
 ```text
 v0.1 records the receipt.
 v0.2 gives the receipt a lifecycle.
 v0.3 connects receipts into contribution graphs.
 v0.4 teaches trace how to breathe.
+v0.5 prepares trace for value circulation.
 ```
 
 ---
 
-## Validation Status
+## Overview
 
-The current examples have been validated against their JSON Schemas.
+Kazene Trace Receipt Protocol defines a structured way to record what happened when humans, AI agents, tools, repositories, prompts, sources, and outputs interact.
 
-```text
-schemas/trace-receipt.schema.json
-schemas/contribution-graph.schema.json
-schemas/memory-breathing.schema.json
+It is designed for AI-assisted creation workflows where it is important to preserve:
 
-examples/trace-receipt.example.yaml
-examples/trace-receipt-lifecycle.example.yaml
-examples/contribution-graph.example.yaml
-examples/memory-breathing.example.yaml
+* provenance,
+* contribution structure,
+* transformation history,
+* privacy boundaries,
+* lifecycle state,
+* memory decisions,
+* attribution readiness,
+* and future value-circulation signals.
 
-scripts/validate_examples.py
-.github/workflows/validate-examples.yml
-```
+The protocol is intentionally minimal.
 
-Validation status:
+It does not require raw content storage by default.
 
-```text
-GitHub Actions: Passing
-Trace Receipt Core example: Passing
-Trace Receipt Lifecycle example: Passing
-Contribution Graph Seed example: Passing
-Memory Breathing Integration example: Passing
-Schema validation: Passing
-```
+Instead, it records structured receipts, hashes, references, lifecycle states, graph links, memory actions, and review signals.
 
-To validate locally, run:
-
-```bash
-python scripts/validate_examples.py
-```
-
-A successful validation confirms that all current examples conform to their corresponding schemas.
-
+---
 
 ## Why This Exists
 
-AI-assisted work is becoming faster, denser, and more derivative.
+AI-assisted creation creates many hidden chains.
 
-A single workflow may now involve:
+A final artifact may involve:
 
-* human ideas,
-* prompts,
+* an original human idea,
+* one or more prompts,
+* source references,
 * AI-generated drafts,
-* code changes,
-* design revisions,
-* repository updates,
+* edits and corrections,
+* validation steps,
+* release decisions,
 * memory compaction,
-* agent routing,
-* and downstream publications.
+* and later value circulation.
 
-Without a minimal trace standard, these events become difficult to audit, attribute, compress, or reuse.
+Without trace receipts, these chains disappear.
 
-However, storing everything as raw logs creates a different problem:
+Without lifecycle controls, trace becomes surveillance.
 
-> A trace system can easily become a surveillance system.
+Without contribution graphs, influence remains invisible.
 
-Kazene Trace Receipt Protocol avoids that by treating trace as a **structured receipt**, not a warehouse.
+Without memory breathing, everything accumulates.
 
-The default design is:
+Without royalty hooks, value circulation has no clean bridge.
 
-```text
-hash over raw content
-structure over full logs
-retention over permanent storage
-review boundary over silent automation
-contribution hints over final royalty decisions
-```
-
----
-
-## Core Concept
-
-A **Trace Receipt** is a minimal record of an event.
-
-It describes:
-
-* when the event happened,
-* what type of event it was,
-* who or what acted,
-* what sources were referenced,
-* what transformation occurred,
-* what output was produced,
-* what permission or usage scope applies,
-* what contribution hint exists,
-* what privacy and retention rules apply,
-* whether future royalty routing may be needed,
-* and whether human review is required.
-
-It does **not** need to store the raw source or output content.
-
----
-
-## Design Principles
+Kazene Trace Receipt Protocol solves this by defining a staged structure:
 
 ```text
-Trace is not surveillance.
-Trace is structured accountability.
-
-A receipt is not a verdict.
-It records an event before value distribution is decided.
-
-Contribution is not yet royalty.
-It is a seed for future contribution graphs.
-
-Forgetting is not loss.
-It is part of healthy trace lifecycle management.
-
-Raw content should not be stored by default.
-Hashes, references, and lifecycle rules should be preferred.
-
-Human review is not a bottleneck.
-It is the boundary that prevents trace automation from becoming unchecked authority.
-```
-
----
-
-## Relationship to Kazene OS
-
-Kazene Trace Receipt Protocol sits between creation, memory, attribution, and royalty circulation.
-
-```text
-Human / AI / Tool Event
+AI-assisted event
   ↓
 Trace Receipt
   ↓
@@ -206,16 +109,28 @@ Royalty OS Hook
 Human Review / Dispute Layer
 ```
 
-It can connect to:
+---
 
-* **Kazene Memory Breathing Protocol**
-* **風の記憶丸**
-* **構造反芻丸**
-* **Royalty OS**
-* **Contribution Graph systems**
-* **AI-assisted GitHub workflows**
-* **Enterprise trace gateways**
-* **Public commons attribution layers**
+## Core Philosophy
+
+```text
+Trace is not surveillance.
+Trace is a receipt.
+
+Memory is not storage.
+Memory is metabolism.
+
+Attribution is not ownership.
+Attribution is a review signal.
+
+Influence is not entitlement.
+Influence is a graph hint.
+
+Royalty routing is not payment calculation.
+Royalty routing is value-circulation readiness.
+
+No final value allocation without human review.
+```
 
 ---
 
@@ -223,12 +138,14 @@ It can connect to:
 
 Kazene Trace Receipt Protocol is:
 
-* a minimal receipt format,
-* a trace lifecycle seed,
+* a structured trace receipt format,
+* a lifecycle-aware trace model,
 * a contribution graph seed,
-* a privacy-aware metadata structure,
-* a bridge between AI workflows and future royalty systems,
-* and a foundation for memory compaction and human review.
+* a memory breathing integration layer,
+* a preliminary Royalty OS hook,
+* a privacy-preserving provenance layer,
+* a human-review-first governance interface,
+* and a foundation for future value-circulation systems.
 
 ---
 
@@ -236,417 +153,302 @@ Kazene Trace Receipt Protocol is:
 
 Kazene Trace Receipt Protocol is **not**:
 
-* a payment system,
-* a final royalty calculation engine,
-* a surveillance log,
+* a payment engine,
+* a legal ownership engine,
+* a surveillance system,
 * a full provenance database,
-* a license enforcement system,
-* a blockchain requirement,
-* or a replacement for human judgment.
+* a DRM system,
+* a copyright enforcement mechanism,
+* a final royalty calculator,
+* or an automated entitlement system.
 
-Royalty routing may be added later, but v0.1 only records the structural conditions needed for future attribution and review.
+The protocol prepares records for review.
+
+It does not silently decide final ownership, payment, or authorship.
 
 ---
 
 ## Repository Structure
 
 ```text
-kazene-trace-receipt-protocol/
-├─ README.md
-├─ CHANGELOG.md
-├─ docs/
-│  ├─ trace-receipt-overview.md
-│  ├─ trace-receipt-lifecycle.md
-│  └─ privacy-and-forgetting.md
-├─ schemas/
-│  └─ trace-receipt.schema.json
-├─ examples/
-│  └─ trace-receipt.example.yaml
-├─ scripts/
-│  └─ validate_examples.py
-└─ .github/
-   └─ workflows/
-      └─ validate-examples.yml
+.
+├── README.md
+├── CHANGELOG.md
+├── docs/
+│   ├── trace-lifecycle.md
+│   ├── contribution-graph-seed.md
+│   ├── memory-breathing-integration.md
+│   └── royalty-os-hook.md
+├── schemas/
+│   ├── trace-receipt.schema.json
+│   ├── contribution-graph.schema.json
+│   ├── memory-breathing.schema.json
+│   └── royalty-os-hook.schema.json
+├── examples/
+│   ├── trace-receipt.example.yaml
+│   ├── trace-receipt-lifecycle.example.yaml
+│   ├── contribution-graph.example.yaml
+│   ├── memory-breathing.example.yaml
+│   └── royalty-os-hook.example.yaml
+├── scripts/
+│   └── validate_examples.py
+└── .github/
+    └── workflows/
+        └── validate-examples.yml
 ```
 
 ---
 
-## Minimal Trace Receipt Example
+## Core Objects
+
+The protocol currently defines four main top-level objects.
+
+---
+
+### 1. Trace Receipt
+
+Top-level object:
 
 ```yaml
 trace_receipt:
-  id: "trace-2026-06-18-001"
-  version: "0.1.0"
-  timestamp: "2026-06-18T05:39:00Z"
-
+  id: "trace-2026-06-19-001"
+  version: "0.2.0"
   event_type: "generate"
-  chain_id: null
-  parent_trace_id: null
-  child_traces: []
+```
 
-  actor:
-    type: "human"
-    id: "human:creator"
-    role: "originator"
+A trace receipt records an AI-assisted or human-assisted event.
 
-  source_refs:
-    - type: "prompt"
-      ref_hash: "sha256:example-source-hash"
-      visibility: "private"
+It captures:
 
-  transformation:
-    intent: "article_draft"
-    method: "ai_assisted_generation"
-    model_or_tool: "chatgpt"
-    model_version: "unknown"
-    compute_provider: "openai"
-    output_hash: "sha256:example-output-hash"
-    derivative_level: "medium"
+* what happened,
+* who or what acted,
+* what source references were involved,
+* what transformation occurred,
+* what permissions apply,
+* what privacy constraints exist,
+* what lifecycle state the trace has,
+* and whether human review is required.
 
-  contribution:
-    contribution_type: "idea"
-    weight_hint: "high"
-    estimated_influence: 0.8
+Defined by:
 
-  permission:
-    usage_scope: "public"
-    consent_status: "explicit"
-    license_ref: null
+```text
+schemas/trace-receipt.schema.json
+examples/trace-receipt.example.yaml
+examples/trace-receipt-lifecycle.example.yaml
+```
 
-  privacy:
-    raw_content_stored: false
-    reversible: false
-    retention: "working"
-    zero_knowledge_proof: null
+---
 
-  lifecycle:
-    expires_at: null
-    forgetting_action: "compact_after_use"
+### 2. Contribution Graph
 
-  value_hook:
+Top-level object:
+
+```yaml
+contribution_graph:
+  graph_id: "graph-2026-06-19-001"
+  version: "0.3.0"
+  graph_type: "contribution_chain"
+```
+
+A contribution graph connects multiple trace receipts into a structured graph of influence, lineage, review boundaries, memory actions, and future value-routing readiness.
+
+It captures:
+
+* graph nodes,
+* graph edges,
+* influence weights,
+* contribution hints,
+* review triggers,
+* terminal traces,
+* and value hook preparation.
+
+Defined by:
+
+```text
+schemas/contribution-graph.schema.json
+examples/contribution-graph.example.yaml
+```
+
+---
+
+### 3. Memory Breathing
+
+Top-level object:
+
+```yaml
+memory_breathing:
+  memory_id: "memory-2026-06-19-001"
+  version: "0.4.0"
+  memory_action: "compact"
+```
+
+Memory Breathing Integration decides how trace and graph structures should move through memory metabolism.
+
+It captures whether a trace or graph should be:
+
+* retained,
+* compacted,
+* forgotten,
+* archived,
+* reviewed,
+* made implicit,
+* or converted into recurrence rules.
+
+Defined by:
+
+```text
+schemas/memory-breathing.schema.json
+examples/memory-breathing.example.yaml
+```
+
+---
+
+### 4. Royalty OS Hook
+
+Top-level object:
+
+```yaml
+royalty_os_hook:
+  hook_id: "royalty-hook-2026-06-19-001"
+  version: "0.5.0"
+  routing:
     royalty_route: "pending"
-    attribution_required: true
+```
 
-  review:
-    human_review_required: true
-    reason: "authorship_and_value"
+Royalty OS Hook prepares trace, graph, memory, release, or publication records for future value circulation.
+
+It captures:
+
+* royalty route,
+* route basis,
+* attribution requirement,
+* monetization status,
+* allocation readiness,
+* allocation hint,
+* estimated value weight,
+* human review boundary,
+* dispute preparation,
+* and links to related records.
+
+Defined by:
+
+```text
+schemas/royalty-os-hook.schema.json
+examples/royalty-os-hook.example.yaml
 ```
 
 ---
 
-## Core Fields
+## Protocol Layers
 
-### `id`
+### v0.1 — Trace Receipt Core
 
-Unique identifier for the trace receipt.
+The first layer records what happened.
 
-Example:
+It defines the minimal structure for an AI-assisted event receipt.
 
-```yaml
-id: "trace-2026-06-18-001"
+Core fields include:
+
+* `id`
+* `version`
+* `timestamp`
+* `event_type`
+* `actor`
+* `source_refs`
+* `transformation`
+* `contribution`
+* `permission`
+* `privacy`
+* `lifecycle`
+* `value_hook`
+* `review`
+
+---
+
+### v0.2 — Trace Lifecycle
+
+The second layer gives trace receipts a lifecycle.
+
+It adds:
+
+* `read`
+* `ingest`
+* `reference`
+* actor authority scope,
+* source influence hints,
+* lifecycle states,
+* and stronger parent-child trace semantics.
+
+Lifecycle states include:
+
+```text
+created
+validated
+linked
+compacted
+retained
+forgotten
+archived
+reviewed
 ```
 
 ---
 
-### `version`
+### v0.3 — Contribution Graph Seed
 
-Protocol version used by the receipt.
+The third layer connects trace receipts into contribution graphs.
 
-Example:
+It defines:
 
-```yaml
-version: "0.1.0"
-```
+* graph nodes,
+* graph edges,
+* relation types,
+* influence weights,
+* contribution hints,
+* review triggers,
+* and value hook preparation.
 
----
-
-### `timestamp`
-
-Time when the trace event occurred.
-
-Example:
-
-```yaml
-timestamp: "2026-06-18T05:39:00Z"
-```
+This layer makes trace receipts composable.
 
 ---
 
-### `event_type`
+### v0.4 — Memory Breathing Integration
 
-Type of event being recorded.
+The fourth layer connects trace and graph structures to memory metabolism.
 
-Initial v0.1 event types:
-
-```text
-generate
-edit
-summarize
-code_change
-schema_change
-example_change
-review
-compact
-route
-release
-```
-
-Future versions may extend this list to include:
+It defines memory layers:
 
 ```text
-video_generation
-design_change
-robot_action
-sensor_action
-agent_execution
-```
-
----
-
-### `actor`
-
-The human, AI agent, system, organization, or tool that performed the event.
-
-Example:
-
-```yaml
-actor:
-  type: "human"
-  id: "human:creator"
-  role: "originator"
-```
-
-Allowed actor types:
-
-```text
-human
-ai_agent
-system
-organization
-tool
-```
-
----
-
-### `source_refs`
-
-A list of sources referenced by the event.
-
-Sources should be referenced by hash or structured identifier whenever possible.
-
-Example:
-
-```yaml
-source_refs:
-  - type: "prompt"
-    ref_hash: "sha256:example-source-hash"
-    visibility: "private"
-```
-
-Initial source types:
-
-```text
-prompt
-file
-url
-repository
-dataset
-memory
-design_asset
-sensor
-manual_input
-```
-
-Visibility levels:
-
-```text
-private
-shared
-public
-restricted
-```
-
----
-
-### `transformation`
-
-Describes what transformation occurred.
-
-Example:
-
-```yaml
-transformation:
-  intent: "article_draft"
-  method: "ai_assisted_generation"
-  model_or_tool: "chatgpt"
-  model_version: "unknown"
-  compute_provider: "openai"
-  output_hash: "sha256:example-output-hash"
-  derivative_level: "medium"
-```
-
-Derivative levels:
-
-```text
-low
-medium
-high
-critical
-```
-
-The derivative level is only a hint.
-It is not a final legal or economic judgment.
-
----
-
-### `contribution`
-
-Records a lightweight contribution hint.
-
-Example:
-
-```yaml
-contribution:
-  contribution_type: "idea"
-  weight_hint: "high"
-  estimated_influence: 0.8
-```
-
-Contribution types:
-
-```text
-idea
-prompt
-data
-code
-design
-review
-correction
-action
-context
-memory
-```
-
-Weight hints:
-
-```text
-low
-medium
-high
-critical
-```
-
-`estimated_influence` is optional and should be treated as a provisional signal, not a final attribution score.
-
----
-
-### `permission`
-
-Records usage scope, consent status, and optional license reference.
-
-Example:
-
-```yaml
-permission:
-  usage_scope: "public"
-  consent_status: "explicit"
-  license_ref: null
-```
-
-Usage scopes:
-
-```text
-personal
-internal
-commercial
-public
-training
-no_training
-research
-archive
-```
-
-Consent status values:
-
-```text
-explicit
-implied
-unknown
-denied
-not_required
-```
-
----
-
-### `privacy`
-
-Defines how sensitive content is handled.
-
-Example:
-
-```yaml
-privacy:
-  raw_content_stored: false
-  reversible: false
-  retention: "working"
-  zero_knowledge_proof: null
-```
-
-Retention levels:
-
-```text
-temporary
+short_term
 working
 long_term
-forget_after_use
+implicit
 archive
 ```
 
-The default recommendation is:
-
-```yaml
-raw_content_stored: false
-```
-
----
-
-### `lifecycle`
-
-Defines trace lifecycle and forgetting behavior.
-
-Example:
-
-```yaml
-lifecycle:
-  expires_at: null
-  forgetting_action: "compact_after_use"
-```
-
-Forgetting actions:
+It defines memory actions:
 
 ```text
 retain
-compact_after_use
-forget_after_use
+compact
+forget
 archive
-human_review
+review
+implicit
+convert_to_rule
 ```
+
+This layer prevents trace from becoming endless accumulation.
+
+Trace should breathe.
 
 ---
 
-### `value_hook`
+### v0.5 — Royalty OS Hook
 
-Defines whether the trace may connect to future royalty or value routing systems.
+The fifth layer connects trace, graph, and memory records to value-circulation readiness.
 
-Example:
-
-```yaml
-value_hook:
-  royalty_route: "pending"
-  attribution_required: true
-```
-
-Royalty route values:
+It defines royalty route values:
 
 ```text
 none
@@ -654,106 +456,302 @@ pending
 direct
 pool
 human_review
+blocked
 ```
 
-This field does not calculate payment.
-It only marks whether future value routing may be relevant.
-
----
-
-### `review`
-
-Defines whether human review is required.
-
-Example:
-
-```yaml
-review:
-  human_review_required: true
-  reason: "authorship_and_value"
-```
-
-Human review should be required when trace decisions involve:
-
-* authorship,
-* attribution,
-* value allocation,
-* legal interpretation,
-* privacy risk,
-* safety boundary,
-* physical-world action,
-* irreversible publication,
-* cross-agent authority,
-* or disputed contribution.
-
----
-
-## Trace Lifecycle
-
-A trace receipt may move through the following lifecycle:
+It defines monetization status values:
 
 ```text
-created
-  ↓
-validated
-  ↓
-linked
-  ↓
-compacted
-  ↓
-retained / forgotten / archived
-  ↓
-reviewed if needed
+not_applicable
+not_calculated
+eligible
+ineligible
+pending_review
+blocked
 ```
 
-The protocol supports future extension into parent-child trace chains:
+It defines allocation readiness:
 
 ```text
-parent_trace_id
-  ↓
-current_trace_id
-  ↓
-child_traces
+not_assigned
+direct_candidate
+pool_candidate
+manual_review_required
+blocked
 ```
 
-This allows trace receipts to become seeds for future contribution graphs without requiring a full graph system in v0.1.
+This layer does not calculate final payment.
+
+It prepares records for human-reviewed Royalty OS processing.
 
 ---
 
-## Privacy and Forgetting
+## Validation Status
 
-This protocol treats forgetting as a first-class operation.
-
-Forgetting may mean:
-
-* deleting raw temporary data,
-* retaining only hashes,
-* compacting trace records,
-* downgrading memory weight,
-* moving records to archive,
-* or returning the decision to human review.
-
-The goal is to preserve accountability without creating permanent surveillance.
-
----
-
-## Validation
-
-The repository includes:
+The current examples have been validated against their JSON Schemas.
 
 ```text
 schemas/trace-receipt.schema.json
+schemas/contribution-graph.schema.json
+schemas/memory-breathing.schema.json
+schemas/royalty-os-hook.schema.json
+
 examples/trace-receipt.example.yaml
+examples/trace-receipt-lifecycle.example.yaml
+examples/contribution-graph.example.yaml
+examples/memory-breathing.example.yaml
+examples/royalty-os-hook.example.yaml
+
 scripts/validate_examples.py
+.github/workflows/validate-examples.yml
 ```
 
-The validation script checks that the example file conforms to the JSON Schema.
+Validation status:
 
-Expected command:
+```text
+GitHub Actions: Passing
+Trace Receipt Core example: Passing
+Trace Receipt Lifecycle example: Passing
+Contribution Graph Seed example: Passing
+Memory Breathing Integration example: Passing
+Royalty OS Hook example: Passing
+Schema validation: Passing
+```
+
+To validate locally:
 
 ```bash
 python scripts/validate_examples.py
 ```
+
+Expected output:
+
+```text
+[validate] Trace Receipt Core
+[ok] Trace Receipt Core example is valid
+
+[validate] Trace Receipt Lifecycle
+[ok] Trace Receipt Lifecycle example is valid
+
+[validate] Contribution Graph Seed
+[ok] Contribution Graph Seed example is valid
+
+[validate] Memory Breathing Integration
+[ok] Memory Breathing Integration example is valid
+
+[validate] Royalty OS Hook
+[ok] Royalty OS Hook example is valid
+```
+
+---
+
+## Example: Trace to Value-Circulation Readiness
+
+```text
+human idea
+  ↓
+prompt
+  ↓
+AI-assisted draft
+  ↓
+edit
+  ↓
+validation
+  ↓
+release
+  ↓
+trace receipts
+  ↓
+contribution graph
+  ↓
+memory breathing
+  ↓
+royalty OS hook
+  ↓
+human review
+  ↓
+future value circulation
+```
+
+---
+
+## Human Review Boundary
+
+Human review is required when protocol records involve:
+
+* authorship,
+* attribution,
+* value allocation,
+* royalty routing,
+* legal interpretation,
+* privacy risk,
+* safety boundary,
+* disputed contribution,
+* cross-agent authority,
+* irreversible publication,
+* trace deletion,
+* or blocked consent.
+
+The central rule is:
+
+```text
+No final value allocation without human review.
+```
+
+Automated systems may propose:
+
+* trace receipts,
+* lifecycle states,
+* contribution graphs,
+* memory actions,
+* royalty routes,
+* allocation hints,
+* dispute signals,
+* and monetization readiness.
+
+They must not silently decide:
+
+* legal authorship,
+* ownership,
+* final royalty,
+* final payment,
+* or economic entitlement.
+
+---
+
+## Privacy Design
+
+The protocol is designed to avoid raw content storage by default.
+
+Instead of storing full prompts, drafts, sources, or outputs, records may use:
+
+* hashes,
+* references,
+* visibility flags,
+* lifecycle states,
+* compacted summaries,
+* structural patterns,
+* and review signals.
+
+Privacy-related design goals:
+
+```text
+Store less.
+Preserve structure.
+Avoid irreversible exposure.
+Prefer compaction over accumulation.
+Require human review for sensitive records.
+```
+
+---
+
+## Relationship to Kazene OS
+
+Kazene Trace Receipt Protocol is part of the broader Kazene OS architecture.
+
+It connects especially to:
+
+* Kazene Memory Breathing Protocol,
+* 風の記憶丸,
+* 構造反芻丸,
+* Contribution Graph,
+* Royalty OS,
+* Trace Layer,
+* Human Review Layer,
+* and future dispute-resolution structures.
+
+Conceptually:
+
+```text
+Trace Receipt
+  = event receipt
+
+Trace Lifecycle
+  = state and time control
+
+Contribution Graph
+  = influence and lineage mapping
+
+Memory Breathing
+  = retention, compaction, forgetting, archive, review
+
+Royalty OS Hook
+  = value-circulation readiness
+```
+
+---
+
+## Relationship to 風の記憶丸
+
+風の記憶丸 treats memory as metabolism.
+
+Kazene Trace Receipt Protocol provides structured trace material for that metabolism.
+
+```text
+Trace Receipt
+  ↓
+Contribution Graph
+  ↓
+Memory Breathing
+  ↓
+retain / compact / forget / archive / review / implicit / convert_to_rule
+```
+
+Trace is not stored forever.
+
+Trace is metabolized.
+
+---
+
+## Relationship to 構造反芻丸
+
+構造反芻丸 digests errors, failures, inconsistencies, and unfinished structures.
+
+Kazene Trace Receipt Protocol can provide structured input for rumination records.
+
+```text
+failed output
+  ↓
+trace receipt
+  ↓
+rumination record
+  ↓
+memory breathing
+  ↓
+recurrence rule
+```
+
+This makes repeated mistakes observable, digestible, and preventable.
+
+---
+
+## Relationship to Royalty OS
+
+Royalty OS Hook is not the full Royalty OS.
+
+It is the adapter layer.
+
+```text
+Trace Receipt
+  ↓
+Trace Lifecycle
+  ↓
+Contribution Graph
+  ↓
+Memory Breathing
+  ↓
+Royalty OS Hook
+  ↓
+Royalty OS
+  ↓
+Human Review / Dispute Layer
+```
+
+Royalty OS may later calculate, allocate, distribute, or record value circulation.
+
+Royalty OS Hook only prepares the route.
+
+---
 
 ## Version Roadmap
 
@@ -791,10 +789,6 @@ retention / compaction / forgetting / archive / review
 
 v0.2 extended Trace Receipt Core by adding lifecycle-aware trace management.
 
-It introduced the idea that a trace receipt is not only a static record.
-
-It can be created, validated, linked, compacted, retained, forgotten, archived, or reviewed.
-
 ---
 
 ### v0.3 — Contribution Graph Seed
@@ -814,13 +808,11 @@ review triggers
 
 v0.3 connected multiple trace receipts into lightweight contribution graphs.
 
-It established the first graph layer for mapping influence, lineage, memory actions, review boundaries, and future royalty-preparation routes.
-
 ---
 
 ### v0.4 — Memory Breathing Integration
 
-Status: Current candidate
+Status: Completed as `v0.4.0-candidate`
 
 Focus:
 
@@ -835,168 +827,258 @@ implicit guidance
 convert_to_rule
 ```
 
-v0.4 connects trace receipts and contribution graphs to memory metabolism.
-
-It defines how trace should be retained, compacted, forgotten, archived, reviewed, made implicit, or converted into recurrence rules.
-
-In short:
-
-```text
-Trace should not accumulate endlessly.
-Trace should breathe.
-```
+v0.4 connected trace receipts and contribution graphs to memory metabolism.
 
 ---
 
 ### v0.5 — Royalty OS Hook
 
-Planned focus:
+Status: Current candidate
+
+Focus:
 
 ```text
 attribution_required
 royalty_route
-pool routing
-review boundary
+route_basis
+monetization_status
+allocation readiness
+allocation hints
 dispute preparation
+human review boundary
 value circulation readiness
 ```
 
-v0.5 will add preliminary hooks for future value circulation and Royalty OS integration.
+v0.5 connects trace, graph, and memory records to preliminary value-circulation routing.
 
-It will not calculate final payment.
+It does not calculate final payment.
 
-It will prepare trace, graph, and memory records for attribution review, royalty routing, and dispute-aware value circulation.
-
-
-## Example Use Cases
-
-### AI-assisted article creation
-
-```text
-handwritten idea
-  → prompt
-  → AI draft
-  → human edit
-  → blog post
-  → trace receipt
-```
+It prepares reviewable routing signals.
 
 ---
 
-### GitHub specification work
+### v0.6 — Dispute Review Layer
+
+Planned focus:
 
 ```text
-concept
-  → README
-  → schema
-  → example
-  → validator
-  → release note
-  → trace receipt
+dispute records
+claimant signals
+conflict reasons
+review status
+resolution references
+blocked routing
+appeal path
 ```
+
+v0.6 may add a structured layer for handling disputed contribution, blocked routing, attribution conflict, and review outcomes.
 
 ---
 
-### Memory compaction
+### v0.7 — Public Trace Receipt Bundle
+
+Planned focus:
 
 ```text
-long conversation
-  → structural summary
-  → useful memory retained
-  → raw noise released
-  → trace receipt
+portable receipt bundles
+public metadata
+private hash references
+publication linkage
+external citation readiness
+machine-readable release trace
 ```
+
+v0.7 may define how multiple protocol objects can be bundled for public release without exposing private raw content.
 
 ---
 
-### Future royalty routing
+## Design Principles
 
-```text
-origin idea
-  → derivative article
-  → code implementation
-  → public release
-  → contribution graph
-  → royalty review
-```
+### 1. Minimal by Default
+
+Only record what is necessary.
+
+Do not store raw content unless explicitly needed and permitted.
 
 ---
 
-## Integration with Memory and Rumination Systems
+### 2. Privacy-Preserving
 
-Kazene Trace Receipt Protocol can work with memory and rumination agents.
+Use hashes, references, visibility flags, and lifecycle controls.
 
-```text
-Trace Receipt
-  = records what happened
-
-風の記憶丸
-  = decides what to retain, compact, forget, or route
-
-構造反芻丸
-  = converts failure traces into recurrence prevention rules
-
-Royalty OS
-  = connects trace records to future value circulation
-```
-
-This allows the protocol to support both accountability and cognitive load reduction.
+Trace should support accountability without becoming surveillance.
 
 ---
 
-## Human Review Boundary
+### 3. Human-Review-First
 
-This protocol must not silently decide critical matters.
+Sensitive decisions must return to human review.
 
-Human review is required when a trace affects:
+Especially:
 
 * authorship,
-* ownership,
 * attribution,
-* royalty routing,
+* money,
+* law,
 * safety,
 * privacy,
-* legal interpretation,
-* financial consequence,
-* political interpretation,
-* physical-world action,
-* or irreversible external publication.
-
-Trace receipts may assist review.
-
-They must not replace it.
+* and irreversible publication.
 
 ---
 
-## License
+### 4. Lifecycle-Aware
 
-This project is intended to be developed as an open standard.
+Trace should have state.
 
-Recommended license:
+Trace can be:
 
-```text
-MIT License for code
-CC BY 4.0 for documentation
+* created,
+* validated,
+* linked,
+* compacted,
+* retained,
+* forgotten,
+* archived,
+* or reviewed.
+
+---
+
+### 5. Graph-Ready
+
+Individual receipts should be linkable into contribution graphs.
+
+Contribution should be visible as structure, not as vague memory.
+
+---
+
+### 6. Memory as Metabolism
+
+Memory should not mean permanent storage.
+
+Trace should be retained, compacted, forgotten, archived, reviewed, made implicit, or converted into rules according to structure and need.
+
+---
+
+### 7. Value Routing Is Not Payment
+
+Royalty OS Hook prepares value-circulation readiness.
+
+It does not decide final payout.
+
+---
+
+## Use Cases
+
+Kazene Trace Receipt Protocol may be useful for:
+
+* AI-assisted writing,
+* AI-assisted coding,
+* open-source contribution tracking,
+* structured attribution,
+* memory compaction,
+* release validation,
+* model-assisted research,
+* prompt lineage,
+* content provenance,
+* knowledge workflow auditing,
+* royalty preparation,
+* dispute preparation,
+* and human-reviewed value circulation.
+
+---
+
+## Local Validation
+
+Install dependencies:
+
+```bash
+python -m pip install "jsonschema>=4.0.0" "PyYAML>=6.0.0"
 ```
 
-Final license selection should be confirmed by the repository owner.
+Run validation:
+
+```bash
+python scripts/validate_examples.py
+```
+
+---
+
+## GitHub Actions
+
+The repository includes a GitHub Actions workflow:
+
+```text
+.github/workflows/validate-examples.yml
+```
+
+It validates all current examples against their corresponding JSON Schemas.
+
+The workflow runs on:
+
+* push to `main`,
+* pull requests to `main`,
+* and manual workflow dispatch.
 
 ---
 
 ## Status
 
 ```text
-Version: v0.1.0-candidate
-Status: Draft
-Layer: Trace Receipt Core
+Protocol: Kazene Trace Receipt Protocol
+Current Version: v0.5.0-candidate
+Current Layer: Royalty OS Hook
+Validation: Passing
+Maturity: Draft protocol candidate
 ```
 
-Kazene Trace Receipt Protocol is an early-stage standard for creating structured, privacy-aware, lifecycle-conscious receipts for AI-assisted creation and transformation.
+Kazene Trace Receipt Protocol v0.5.0-candidate establishes a minimal path from AI-assisted events to value-circulation readiness.
 
-Its purpose is simple:
+It records events.
 
-> Record enough structure to support future attribution, memory breathing, and value circulation — without turning trace into surveillance.
+It gives them lifecycle.
 
+It connects them into graphs.
+
+It teaches them to breathe.
+
+It prepares them for value routing.
+
+But it keeps final judgment where it belongs:
+
+```text
+with human review.
 ```
+
+---
+
+## License
+
+License to be defined by the repository maintainer.
+
+Recommended options:
+
+* MIT License for broad implementation,
+* Apache-2.0 for patent-aware open standard use,
+* or CC-BY-4.0 for documentation-focused publication.
+
+---
+
+## Summary
+
+```text
+Kazene Trace Receipt Protocol
+  = AI-era receipt layer
+  + lifecycle control
+  + contribution graph
+  + memory breathing
+  + Royalty OS hook
+  + human review boundary
 ```
 
+Trace should not disappear.
+
+Trace should not dominate.
+
+Trace should breathe.
+
+And when value begins to circulate, the route should be visible, reviewable, and human-governed.
