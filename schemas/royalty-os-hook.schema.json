@@ -1,0 +1,307 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://kazene.org/schemas/royalty-os-hook.schema.json",
+"title": "Kazene Royalty OS Hook",
+"description": "A preliminary value-circulation hook for preparing trace receipts, contribution graphs, memory breathing records, releases, and publications for attribution, royalty routing, dispute preparation, and human review without calculating final payment.",
+"type": "object",
+"required": [
+"royalty_os_hook"
+],
+"additionalProperties": false,
+"properties": {
+"royalty_os_hook": {
+"type": "object",
+"required": [
+"hook_id",
+"version",
+"created_at",
+"target",
+"routing",
+"allocation",
+"review",
+"dispute",
+"links"
+],
+"additionalProperties": false,
+"properties": {
+"hook_id": {
+"type": "string",
+"minLength": 1,
+"description": "Unique identifier for this Royalty OS Hook record."
+},
+"version": {
+"type": "string",
+"pattern": "^0\.5\.0$",
+"description": "Protocol version used by this Royalty OS Hook record."
+},
+"created_at": {
+"type": "string",
+"format": "date-time",
+"description": "Timestamp when the Royalty OS Hook record was created."
+},
+"target": {
+"type": "object",
+"required": [
+"target_type",
+"target_id"
+],
+"additionalProperties": false,
+"properties": {
+"target_type": {
+"type": "string",
+"enum": [
+"trace_receipt",
+"contribution_graph",
+"trace_chain",
+"graph_edge",
+"graph_node",
+"memory_breathing_record",
+"release_record",
+"publication_record"
+],
+"description": "Type of target this royalty hook applies to."
+},
+"target_id": {
+"type": "string",
+"minLength": 1,
+"description": "Identifier of the target object."
+}
+}
+},
+"routing": {
+"type": "object",
+"required": [
+"royalty_route",
+"route_basis",
+"attribution_required",
+"monetization_status"
+],
+"additionalProperties": false,
+"properties": {
+"royalty_route": {
+"type": "string",
+"enum": [
+"none",
+"pending",
+"direct",
+"pool",
+"human_review",
+"blocked"
+],
+"description": "Future royalty or value-routing direction. This does not calculate payment."
+},
+"route_basis": {
+"type": "string",
+"enum": [
+"trace_receipt",
+"trace_lifecycle",
+"contribution_graph",
+"memory_breathing",
+"manual_review",
+"external_policy"
+],
+"description": "Basis used for the royalty routing signal."
+},
+"attribution_required": {
+"type": "boolean",
+"description": "Whether attribution may be required for this target."
+},
+"monetization_status": {
+"type": "string",
+"enum": [
+"not_applicable",
+"not_calculated",
+"eligible",
+"ineligible",
+"pending_review",
+"blocked"
+],
+"description": "Preliminary monetization readiness state. This is not a final payment decision."
+}
+}
+},
+"allocation": {
+"type": "object",
+"required": [
+"allocation_mode",
+"allocation_hint",
+"estimated_value_weight"
+],
+"additionalProperties": false,
+"properties": {
+"allocation_mode": {
+"type": "string",
+"enum": [
+"not_assigned",
+"direct_candidate",
+"pool_candidate",
+"manual_review_required",
+"blocked"
+],
+"description": "Preliminary allocation readiness mode. This does not assign final payment."
+},
+"allocation_hint": {
+"type": "string",
+"enum": [
+"none",
+"direct_candidate",
+"pool_candidate",
+"review_candidate",
+"dispute_candidate",
+"blocked"
+],
+"description": "Lightweight allocation hint for future review."
+},
+"estimated_value_weight": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+],
+"description": "Provisional value relevance weight. This is not a final royalty weight."
+}
+}
+},
+"review": {
+"type": "object",
+"required": [
+"human_review_required",
+"reason"
+],
+"additionalProperties": false,
+"properties": {
+"human_review_required": {
+"type": "boolean",
+"description": "Whether this royalty hook requires human review."
+},
+"reason": {
+"type": "string",
+"enum": [
+"none",
+"authorship",
+"attribution",
+"value_allocation",
+"royalty_preparation",
+"legal_interpretation",
+"privacy_risk",
+"safety_boundary",
+"disputed_contribution",
+"external_policy",
+"irreversible_publication",
+"other"
+],
+"description": "Reason for human review."
+}
+}
+},
+"dispute": {
+"type": "object",
+"required": [
+"dispute_status",
+"dispute_preparation_required"
+],
+"additionalProperties": false,
+"properties": {
+"dispute_status": {
+"type": "string",
+"enum": [
+"none",
+"possible",
+"active",
+"resolved",
+"blocked"
+],
+"description": "Current dispute status for this royalty hook."
+},
+"dispute_preparation_required": {
+"type": "boolean",
+"description": "Whether dispute-preparation records or human review should be prepared."
+},
+"dispute_reason": {
+"type": [
+"string",
+"null"
+],
+"enum": [
+"none",
+"authorship",
+"attribution",
+"value_allocation",
+"license_conflict",
+"privacy_risk",
+"consent_denied",
+"external_policy",
+"other",
+null
+],
+"description": "Optional reason for dispute preparation."
+}
+}
+},
+"links": {
+"type": "object",
+"required": [
+"trace_receipt_ids",
+"contribution_graph_ids",
+"memory_breathing_ids"
+],
+"additionalProperties": false,
+"properties": {
+"trace_receipt_ids": {
+"type": "array",
+"description": "Linked trace receipt IDs.",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+},
+"contribution_graph_ids": {
+"type": "array",
+"description": "Linked contribution graph IDs.",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+},
+"memory_breathing_ids": {
+"type": "array",
+"description": "Linked memory breathing record IDs.",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+},
+"release_record_ids": {
+"type": "array",
+"description": "Optional linked release record IDs.",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+},
+"publication_record_ids": {
+"type": "array",
+"description": "Optional linked publication record IDs.",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+}
+}
+}
+}
+}
+}
+}
