@@ -7,15 +7,20 @@ import sys
 import yaml
 from jsonschema import Draft202012Validator, FormatChecker
 
-# Correct __file__ usage
+# FIXED: __file__ restored
 ROOT = Path(__file__).resolve().parents[1]
 
 VALIDATION_TARGETS = [
     {
-        "name": "Trace Receipt",
+        "name": "Trace Receipt Core",
         "schema": ROOT / "schemas" / "trace-receipt.schema.json",
         "example": ROOT / "examples" / "trace-receipt.example.yaml",
-    }
+    },
+    {
+        "name": "Trace Receipt Lifecycle",
+        "schema": ROOT / "schemas" / "trace-receipt.schema.json",
+        "example": ROOT / "examples" / "trace-receipt-lifecycle.example.yaml",
+    },
 ]
 
 def load_json(path: Path):
@@ -68,4 +73,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
