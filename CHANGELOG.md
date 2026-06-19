@@ -1,5 +1,134 @@
 # Changelog
 
+## [v0.5.0-candidate] - 2026-06-19
+
+### Added
+
+* Added `docs/royalty-os-hook.md`.
+* Added `schemas/royalty-os-hook.schema.json`.
+* Added `examples/royalty-os-hook.example.yaml`.
+* Updated `scripts/validate_examples.py` to validate:
+
+  * Trace Receipt Core
+  * Trace Receipt Lifecycle
+  * Contribution Graph Seed
+  * Memory Breathing Integration
+  * Royalty OS Hook
+* Added the initial **Royalty OS Hook** layer.
+
+### Defined
+
+* Defined the top-level `royalty_os_hook` object.
+* Defined royalty hook target types:
+
+  * `trace_receipt`
+  * `contribution_graph`
+  * `trace_chain`
+  * `graph_edge`
+  * `graph_node`
+  * `memory_breathing_record`
+  * `release_record`
+  * `publication_record`
+* Defined royalty route values:
+
+  * `none`
+  * `pending`
+  * `direct`
+  * `pool`
+  * `human_review`
+  * `blocked`
+* Defined route basis values:
+
+  * `trace_receipt`
+  * `trace_lifecycle`
+  * `contribution_graph`
+  * `memory_breathing`
+  * `manual_review`
+  * `external_policy`
+* Defined monetization status values:
+
+  * `not_applicable`
+  * `not_calculated`
+  * `eligible`
+  * `ineligible`
+  * `pending_review`
+  * `blocked`
+* Defined allocation modes:
+
+  * `not_assigned`
+  * `direct_candidate`
+  * `pool_candidate`
+  * `manual_review_required`
+  * `blocked`
+* Defined allocation hints:
+
+  * `none`
+  * `direct_candidate`
+  * `pool_candidate`
+  * `review_candidate`
+  * `dispute_candidate`
+  * `blocked`
+* Defined estimated value weights:
+
+  * `low`
+  * `medium`
+  * `high`
+  * `critical`
+* Defined dispute status values:
+
+  * `none`
+  * `possible`
+  * `active`
+  * `resolved`
+  * `blocked`
+* Defined optional dispute reasons:
+
+  * `none`
+  * `authorship`
+  * `attribution`
+  * `value_allocation`
+  * `license_conflict`
+  * `privacy_risk`
+  * `consent_denied`
+  * `external_policy`
+  * `other`
+* Defined links to:
+
+  * trace receipts
+  * contribution graphs
+  * memory breathing records
+  * release records
+  * publication records
+
+### Validation
+
+* Confirmed that `examples/trace-receipt.example.yaml` passes validation.
+* Confirmed that `examples/trace-receipt-lifecycle.example.yaml` passes validation.
+* Confirmed that `examples/contribution-graph.example.yaml` passes validation.
+* Confirmed that `examples/memory-breathing.example.yaml` passes validation.
+* Confirmed that `examples/royalty-os-hook.example.yaml` passes validation.
+* Confirmed GitHub Actions validation passes.
+
+### Design Principles
+
+* Established that Royalty OS Hook is not a payment engine.
+* Established that royalty routing is value-circulation readiness, not final allocation.
+* Established that attribution is a review signal, not automatic ownership.
+* Established that influence is a graph hint, not entitlement.
+* Established that monetization status is preliminary and reviewable.
+* Established that dispute preparation must be explicit.
+* Established that blocked routing must be representable.
+* Established the rule: no final value allocation without human review.
+* Connected Trace Receipt, Trace Lifecycle, Contribution Graph, Memory Breathing, and Royalty OS into one staged protocol path.
+
+### Status
+
+* Status: `v0.5.0-candidate`
+* Layer: `Royalty OS Hook`
+* Validation: Passing
+* Maturity: Draft protocol candidate
+
+
 ## [v0.4.0-candidate] - 2026-06-19
 
 ### Added
