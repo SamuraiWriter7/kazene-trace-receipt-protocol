@@ -31,7 +31,7 @@
 },
 "version": {
 "type": "string",
-"pattern": "^0\.3\.0$",
+"pattern": "^0\\.3\\.0$",
 "description": "Protocol version used by this contribution graph."
 },
 "created_at": {
