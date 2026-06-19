@@ -35,7 +35,7 @@
 },
 "version": {
 "type": "string",
-"pattern": "^0\.1\.0$",
+"pattern": "^0\\.1\\.0$",
 "description": "Protocol version used by this receipt."
 },
 "timestamp": {
