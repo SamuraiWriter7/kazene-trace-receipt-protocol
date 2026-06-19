@@ -1,0 +1,256 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://kazene.org/schemas/memory-breathing.schema.json",
+"title": "Kazene Memory Breathing Integration",
+"description": "A memory metabolism structure for deciding how trace receipts, contribution graphs, trace chains, graph nodes, graph edges, validation records, release records, and rumination records should be retained, compacted, forgotten, archived, reviewed, made implicit, or converted into rules.",
+"type": "object",
+"required": [
+"memory_breathing"
+],
+"additionalProperties": false,
+"properties": {
+"memory_breathing": {
+"type": "object",
+"required": [
+"memory_id",
+"version",
+"created_at",
+"target",
+"memory_layer",
+"memory_action",
+"memory_weight",
+"reason",
+"retention",
+"compaction",
+"review"
+],
+"additionalProperties": false,
+"properties": {
+"memory_id": {
+"type": "string",
+"minLength": 1,
+"description": "Unique identifier for this memory breathing record."
+},
+"version": {
+"type": "string",
+"pattern": "^0\.4\.0$",
+"description": "Protocol version used by this memory breathing record."
+},
+"created_at": {
+"type": "string",
+"format": "date-time",
+"description": "Timestamp when the memory breathing record was created."
+},
+"target": {
+"type": "object",
+"required": [
+"target_type",
+"target_id"
+],
+"additionalProperties": false,
+"properties": {
+"target_type": {
+"type": "string",
+"enum": [
+"trace_receipt",
+"contribution_graph",
+"trace_chain",
+"graph_edge",
+"graph_node",
+"release_record",
+"validation_record",
+"rumination_record"
+],
+"description": "Type of object this memory breathing decision applies to."
+},
+"target_id": {
+"type": "string",
+"minLength": 1,
+"description": "Identifier of the target object."
+}
+}
+},
+"memory_layer": {
+"type": "string",
+"enum": [
+"short_term",
+"working",
+"long_term",
+"implicit",
+"archive"
+],
+"description": "Memory layer where the target should be placed or interpreted."
+},
+"memory_action": {
+"type": "string",
+"enum": [
+"retain",
+"compact",
+"forget",
+"archive",
+"review",
+"implicit",
+"convert_to_rule"
+],
+"description": "Recommended memory metabolism action."
+},
+"memory_weight": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+],
+"description": "Provisional memory importance weight."
+},
+"reason": {
+"type": "string",
+"minLength": 1,
+"description": "Human-readable reason for the memory breathing decision."
+},
+"retention": {
+"type": "object",
+"required": [
+"retain_until",
+"review_after",
+"archive_after"
+],
+"additionalProperties": false,
+"properties": {
+"retain_until": {
+"type": [
+"string",
+"null"
+],
+"format": "date-time",
+"description": "Optional timestamp until which this memory should remain active."
+},
+"review_after": {
+"type": [
+"string",
+"null"
+],
+"format": "date-time",
+"description": "Optional timestamp after which this memory decision should be reviewed."
+},
+"archive_after": {
+"type": [
+"string",
+"null"
+],
+"format": "date-time",
+"description": "Optional timestamp after which this memory should be archived."
+}
+}
+},
+"compaction": {
+"type": "object",
+"required": [
+"compacted_summary_ref",
+"raw_trace_retained",
+"structural_pattern_retained"
+],
+"additionalProperties": false,
+"properties": {
+"compacted_summary_ref": {
+"type": [
+"string",
+"null"
+],
+"description": "Optional reference to a compacted summary, structural memory, or retained pattern."
+},
+"raw_trace_retained": {
+"type": "boolean",
+"description": "Whether raw trace content is retained after compaction."
+},
+"structural_pattern_retained": {
+"type": "boolean",
+"description": "Whether the reusable structural pattern is retained after compaction."
+}
+}
+},
+"review": {
+"type": "object",
+"required": [
+"human_review_required",
+"reason"
+],
+"additionalProperties": false,
+"properties": {
+"human_review_required": {
+"type": "boolean",
+"description": "Whether this memory breathing decision requires human review."
+},
+"reason": {
+"type": "string",
+"enum": [
+"none",
+"authorship",
+"attribution",
+"value_allocation",
+"privacy_risk",
+"safety_boundary",
+"legal_interpretation",
+"physical_world_action",
+"irreversible_publication",
+"disputed_contribution",
+"cross_agent_authority",
+"memory_retention",
+"trace_deletion",
+"other"
+],
+"description": "Reason for human review."
+}
+}
+},
+"links": {
+"type": [
+"object",
+"null"
+],
+"description": "Optional links to related trace, graph, rumination, memory, or royalty records.",
+"additionalProperties": false,
+"properties": {
+"trace_receipt_ids": {
+"type": "array",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+},
+"contribution_graph_ids": {
+"type": "array",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+},
+"rumination_record_ids": {
+"type": "array",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+},
+"royalty_hook_ids": {
+"type": "array",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+}
+}
+}
+}
+}
+}
+}
