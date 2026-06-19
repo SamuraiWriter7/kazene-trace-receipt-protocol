@@ -31,6 +31,11 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "memory-breathing.schema.json",
         "example": ROOT / "examples" / "memory-breathing.example.yaml",
     },
+    {
+        "name": "Royalty OS Hook",
+        "schema": ROOT / "schemas" / "royalty-os-hook.schema.json",
+        "example": ROOT / "examples" / "royalty-os-hook.example.yaml",
+    },
 ]
 
 def load_json(path: Path):
@@ -83,5 +88,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
 
