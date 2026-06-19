@@ -1,44 +1,43 @@
 memory_breathing:
-memory_id: "memory-2026-06-19-001"
-version: "0.4.0"
-created_at: "2026-06-19T08:30:00Z"
+  memory_id: "memory-2026-06-19-001"
+  version: "0.4.0"
+  created_at: "2026-06-19T08:30:00Z"
 
-target:
-target_type: "contribution_graph"
-target_id: "graph-2026-06-19-001"
+  target:
+    target_type: "contribution_graph"
+    target_id: "graph-2026-06-19-001"
 
-memory_layer: "working"
-memory_action: "compact"
-memory_weight: "high"
+  memory_layer: "working"
+  memory_action: "compact"
+  memory_weight: "high"
 
-reason: "The contribution graph should be compacted after validation while preserving release-relevant structure, critical lineage, and review boundaries."
+  reason: "The contribution graph should be compacted after validation while preserving release-relevant structure, critical lineage, and review boundaries."
 
-retention:
-retain_until: null
-review_after: "2026-07-19T00:00:00Z"
-archive_after: null
+  retention:
+    retain_until: null
+    review_after: "2026-07-19T00:00:00Z"
+    archive_after: null
 
-compaction:
-compacted_summary_ref: "summary:contribution-graph-v0.3"
-raw_trace_retained: false
-structural_pattern_retained: true
+  compaction:
+    compacted_summary_ref: "summary:contribution-graph-v0.3"
+    raw_trace_retained: false
+    structural_pattern_retained: true
 
-review:
-human_review_required: false
-reason: "none"
+  review:
+    human_review_required: false
+    reason: "none"
 
-links:
-trace_receipt_ids:
-- "trace-2026-06-19-001"
-- "trace-2026-06-19-002"
-- "trace-2026-06-19-003"
-- "trace-2026-06-19-004"
-- "trace-2026-06-19-005"
+  links:
+    trace_receipt_ids:
+      - "trace-2026-06-19-001"
+      - "trace-2026-06-19-002"
+      - "trace-2026-06-19-003"
+      - "trace-2026-06-19-004"
+      - "trace-2026-06-19-005"
 
-contribution_graph_ids:
-  - "graph-2026-06-19-001"
+    contribution_graph_ids:
+      - "graph-2026-06-19-001"
 
-rumination_record_ids: []
+    rumination_record_ids: []
 
-royalty_hook_ids: []
-```
+    royalty_hook_ids: []
