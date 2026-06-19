@@ -1,0 +1,435 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://kazene.org/schemas/trace-receipt.schema.json",
+"title": "Kazene Trace Receipt",
+"description": "A minimal structured receipt for AI-assisted creation, transformation, routing, and derivative events without storing raw content by default.",
+"type": "object",
+"required": [
+"trace_receipt"
+],
+"additionalProperties": false,
+"properties": {
+"trace_receipt": {
+"type": "object",
+"required": [
+"id",
+"version",
+"timestamp",
+"event_type",
+"actor",
+"source_refs",
+"transformation",
+"contribution",
+"permission",
+"privacy",
+"lifecycle",
+"value_hook",
+"review"
+],
+"additionalProperties": false,
+"properties": {
+"id": {
+"type": "string",
+"minLength": 1,
+"description": "Unique identifier for this trace receipt."
+},
+"version": {
+"type": "string",
+"pattern": "^0\.1\.0$",
+"description": "Protocol version used by this receipt."
+},
+"timestamp": {
+"type": "string",
+"format": "date-time",
+"description": "Timestamp when the trace event occurred."
+},
+"event_type": {
+"type": "string",
+"enum": [
+"generate",
+"edit",
+"summarize",
+"code_change",
+"schema_change",
+"example_change",
+"review",
+"compact",
+"route",
+"release"
+],
+"description": "Type of event being recorded."
+},
+"chain_id": {
+"type": [
+"string",
+"null"
+],
+"description": "Optional identifier for a future trace chain or distributed ledger reference."
+},
+"parent_trace_id": {
+"type": [
+"string",
+"null"
+],
+"description": "Optional parent trace receipt identifier."
+},
+"child_traces": {
+"type": "array",
+"description": "Optional lightweight references to immediate downstream trace receipts.",
+"items": {
+"type": "string",
+"minLength": 1
+},
+"uniqueItems": true,
+"default": []
+},
+"actor": {
+"type": "object",
+"required": [
+"type",
+"id",
+"role"
+],
+"additionalProperties": false,
+"properties": {
+"type": {
+"type": "string",
+"enum": [
+"human",
+"ai_agent",
+"system",
+"organization",
+"tool"
+],
+"description": "Type of actor that performed the event."
+},
+"id": {
+"type": "string",
+"minLength": 1,
+"description": "Actor identifier. This may be pseudonymous or hashed."
+},
+"role": {
+"type": "string",
+"minLength": 1,
+"description": "Role of the actor in this trace event."
+}
+}
+},
+"source_refs": {
+"type": "array",
+"description": "Sources referenced by this trace event.",
+"minItems": 1,
+"items": {
+"type": "object",
+"required": [
+"type",
+"ref_hash",
+"visibility"
+],
+"additionalProperties": false,
+"properties": {
+"type": {
+"type": "string",
+"enum": [
+"prompt",
+"file",
+"url",
+"repository",
+"dataset",
+"memory",
+"design_asset",
+"sensor",
+"manual_input"
+],
+"description": "Type of source referenced by the event."
+},
+"ref_hash": {
+"type": "string",
+"minLength": 1,
+"description": "Hash or structured reference for the source. Raw content should not be stored here."
+},
+"visibility": {
+"type": "string",
+"enum": [
+"private",
+"shared",
+"public",
+"restricted"
+],
+"description": "Visibility level of the referenced source."
+}
+}
+}
+},
+"transformation": {
+"type": "object",
+"required": [
+"intent",
+"method",
+"model_or_tool",
+"model_version",
+"compute_provider",
+"output_hash",
+"derivative_level"
+],
+"additionalProperties": false,
+"properties": {
+"intent": {
+"type": "string",
+"minLength": 1,
+"description": "Purpose or intent of the transformation."
+},
+"method": {
+"type": "string",
+"minLength": 1,
+"description": "Method used for the transformation."
+},
+"model_or_tool": {
+"type": "string",
+"minLength": 1,
+"description": "Model, AI system, software, tool, or process used."
+},
+"model_version": {
+"type": "string",
+"minLength": 1,
+"description": "Version of the model or tool, if known. Use 'unknown' when unavailable."
+},
+"compute_provider": {
+"type": "string",
+"minLength": 1,
+"description": "Compute or service provider used for the transformation."
+},
+"output_hash": {
+"type": "string",
+"minLength": 1,
+"description": "Hash or structured reference for the output. Raw output content should not be stored here."
+},
+"derivative_level": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+],
+"description": "Provisional indication of how derivative the output is. This is not a legal or economic judgment."
+}
+}
+},
+"contribution": {
+"type": "object",
+"required": [
+"contribution_type",
+"weight_hint"
+],
+"additionalProperties": false,
+"properties": {
+"contribution_type": {
+"type": "string",
+"enum": [
+"idea",
+"prompt",
+"data",
+"code",
+"design",
+"review",
+"correction",
+"action",
+"context",
+"memory"
+],
+"description": "Lightweight hint about the contribution type."
+},
+"weight_hint": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+],
+"description": "Provisional contribution weight hint."
+},
+"estimated_influence": {
+"type": [
+"number",
+"null"
+],
+"minimum": 0,
+"maximum": 1,
+"description": "Optional provisional influence estimate from 0.0 to 1.0. This is not a final attribution score."
+}
+}
+},
+"permission": {
+"type": "object",
+"required": [
+"usage_scope",
+"consent_status",
+"license_ref"
+],
+"additionalProperties": false,
+"properties": {
+"usage_scope": {
+"type": "string",
+"enum": [
+"personal",
+"internal",
+"commercial",
+"public",
+"training",
+"no_training",
+"research",
+"archive"
+],
+"description": "Allowed or intended usage scope."
+},
+"consent_status": {
+"type": "string",
+"enum": [
+"explicit",
+"implied",
+"unknown",
+"denied",
+"not_required"
+],
+"description": "Consent status for the referenced material or action."
+},
+"license_ref": {
+"type": [
+"string",
+"null"
+],
+"description": "Optional license identifier or reference."
+}
+}
+},
+"privacy": {
+"type": "object",
+"required": [
+"raw_content_stored",
+"reversible",
+"retention",
+"zero_knowledge_proof"
+],
+"additionalProperties": false,
+"properties": {
+"raw_content_stored": {
+"type": "boolean",
+"description": "Whether raw source or output content is stored in the trace record. Default recommendation is false."
+},
+"reversible": {
+"type": "boolean",
+"description": "Whether the trace can be reversed to recover sensitive content."
+},
+"retention": {
+"type": "string",
+"enum": [
+"temporary",
+"working",
+"long_term",
+"forget_after_use",
+"archive"
+],
+"description": "Retention level for this trace receipt."
+},
+"zero_knowledge_proof": {
+"type": [
+"string",
+"null"
+],
+"description": "Optional future reference to a zero-knowledge proof or privacy-preserving verification artifact."
+}
+}
+},
+"lifecycle": {
+"type": "object",
+"required": [
+"expires_at",
+"forgetting_action"
+],
+"additionalProperties": false,
+"properties": {
+"expires_at": {
+"type": [
+"string",
+"null"
+],
+"format": "date-time",
+"description": "Optional expiration timestamp for lifecycle-based forgetting or review."
+},
+"forgetting_action": {
+"type": "string",
+"enum": [
+"retain",
+"compact_after_use",
+"forget_after_use",
+"archive",
+"human_review"
+],
+"description": "Recommended lifecycle action for this trace receipt."
+}
+}
+},
+"value_hook": {
+"type": "object",
+"required": [
+"royalty_route",
+"attribution_required"
+],
+"additionalProperties": false,
+"properties": {
+"royalty_route": {
+"type": "string",
+"enum": [
+"none",
+"pending",
+"direct",
+"pool",
+"human_review"
+],
+"description": "Future royalty or value routing hint. This does not calculate payment."
+},
+"attribution_required": {
+"type": "boolean",
+"description": "Whether attribution may be required for this trace."
+}
+}
+},
+"review": {
+"type": "object",
+"required": [
+"human_review_required",
+"reason"
+],
+"additionalProperties": false,
+"properties": {
+"human_review_required": {
+"type": "boolean",
+"description": "Whether this trace receipt requires human review."
+},
+"reason": {
+"type": "string",
+"enum": [
+"none",
+"authorship",
+"authorship_and_value",
+"attribution",
+"value_allocation",
+"legal_interpretation",
+"privacy_risk",
+"safety_boundary",
+"physical_world_action",
+"irreversible_publication",
+"cross_agent_authority",
+"disputed_contribution",
+"other"
+],
+"description": "Reason for human review."
+}
+}
+}
+}
+}
+}
+}
